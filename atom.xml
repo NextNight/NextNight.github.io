@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-07-25T11:03:25.304Z</updated>
+  <updated>2018-07-25T11:05:36.575Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2018/07/25/python-coding/"/>
     <id>http://yoursite.com/2018/07/25/python-coding/</id>
     <published>2018-07-25T11:02:47.000Z</published>
-    <updated>2018-07-25T11:03:25.304Z</updated>
+    <updated>2018-07-25T11:05:36.575Z</updated>
     
     <summary type="html">
     
@@ -30,6 +30,8 @@
     </summary>
     
       <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+      <category term="test" scheme="http://yoursite.com/categories/python/test/"/>
     
     
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
