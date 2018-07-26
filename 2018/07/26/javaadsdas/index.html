@@ -206,16 +206,16 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="headerfade"><a href="#headerfade" class="headerlink" title="headerfade"></a>headerfade</h1><blockquote>
+      		<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><blockquote>
 <p>你好呀。。。。。</p>
 </blockquote>
-<h1 id="dasdadaad"><a href="#dasdadaad" class="headerlink" title="dasdadaad"></a>dasdadaad</h1><p>NexT 中 RSS 有三个设置选项，满足特定的使用场景。 更改 主题配置文件，设定 rss 字段的值：</p>
-<ol>
-<li>false：禁用 RSS，不在页面上显示 RSS 连接。</li>
-</ol>
-<ul>
-<li>留空：使用 Hexo 生成的 Feed 链接。 你可以需要先安装 <code>hexo-generator-feed</code> 插件。<br>具体的链接地址：适用于已经烧制过 Feed 的情形。</li>
-</ul>
+<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>NexT 中 RSS 有三个设置选项，满足特定的使用场景。 更改 主题配置文件，设定 rss 字段的值：</p>
+<p>这样的使用在 2.0.1 中是没问题的，然而在 5.x 中却报错：Variable [tag] is not defined. 无法执行这个 script，后来发现了 default lang 不再是 groovy 而变成了 painless ，而 painless 的取值需要携带 key ，即 params.tag 这样才可以正常找到值。那么 groovy 为什么不再是 default 还被新版本中标记为 deprecated 了呢……要知道 groovy 之前替换掉 mvel 的理由是足够快而且简单……</p>
+<p>先说一下什么是 sandboxed language</p>
+<p>沙盒是在受限的安全环境中运行应用程序的一种做法，这种做法是要限制授予应用程序的代码访问权限。</p>
+<p>像 groovy 和 JavaScript 这类脚本语言它们本身都不是 sandboxed，它们可以做很多系统级别的不止是读写、网络请求的操作，这样就给基于 JAVA 并且在运行中默认开启 The Security Manager 的 elasticsearch 带来很大的安全隐患，比如在脚本中随便加一句 infinite loop ，服务器可能就表现成拒绝访问的状态，所以在之前的版本中 elasticsearch 为 groovy 加入了沙盒控制一些权限，然而后面由于权限限制不够，还是出现了一些问题23333。</p>
+<p>虽然 5.x 仍然内置 groovy ，但是考虑到 elasticsearch script 的来源，可以是 inline、store 、还有 file，前两个就不说了，一个是 query 中直接写进去的像我上面的例子，另一个也是以数据的形式存在某个 cluster state 的 _script 节点下，而 file 的形式是配置在 elasticsearch 的 config 文件夹中，所以从安全的角度，elasticsearch 5.x 只对 file script 默认允许执行 groovy 。</p>
+<p>至于开头的 query ，如果不考虑安全性，例如默认我们的 elasticsearch 运行与一个相对隔离的环境下，如果还想用 inline groovy ，就可以为 groovy 单独开启一个配置 script.engine.groovy.inline: true 或者更宽泛的，针对所有 inline script 的配置script.inline: true，那么为上面的 script 声明一下 lang 就可以成功执行了（在 Python 和 Node.js 包中拼 dict 和 object 也是一样）：</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
