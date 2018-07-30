@@ -4,7 +4,7 @@
   <url>
     <loc>http://yoursite.com/2018/07/30/templeTest/</loc>
     
-    <lastmod>2018-07-30T08:49:28.943Z</lastmod>
+    <lastmod>2018-07-30T10:51:21.911Z</lastmod>
     
   </url>
   
@@ -30,6 +30,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/repository/index.html</loc>
+    
+    <lastmod>2018-07-27T09:13:16.682Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/links/index.html</loc>
     
     <lastmod>2018-07-27T09:13:16.682Z</lastmod>
@@ -37,9 +44,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/repository/index.html</loc>
+    <loc>http://yoursite.com/categories/index.html</loc>
     
-    <lastmod>2018-07-27T09:13:16.682Z</lastmod>
+    <lastmod>2018-07-27T09:13:16.681Z</lastmod>
     
   </url>
   
@@ -52,13 +59,6 @@
   
   <url>
     <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2018-07-27T09:13:16.681Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
     
     <lastmod>2018-07-27T09:13:16.681Z</lastmod>
     
