@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>javaadsdas | Hexo</title>
+  <meta name="description" content="Mysql 烦断肠的字符集/反复安装失败作为一个新手在操作数据库的时候，最烦的就是安装数据库，mysql相对来说，比较简单，不象oracle,也许你安装坏了，可能要重做系统。但是mysql在安装时候最烦的就是字符集不统一的问题和安装失败发现，再次安装怎么都安不上。 一、对于解决mysql反复安装失败的问题 1、重新点击安装程序，因为安装过一次，所以这个程序就会出现修复和卸载两个选项我们可以选择卸载">
+<meta name="keywords" content="tg1,tag2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaadsdas">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/mysql/index.html">
+<meta property="og:site_name" content="Kala">
+<meta property="og:description" content="Mysql 烦断肠的字符集/反复安装失败作为一个新手在操作数据库的时候，最烦的就是安装数据库，mysql相对来说，比较简单，不象oracle,也许你安装坏了，可能要重做系统。但是mysql在安装时候最烦的就是字符集不统一的问题和安装失败发现，再次安装怎么都安不上。 一、对于解决mysql反复安装失败的问题 1、重新点击安装程序，因为安装过一次，所以这个程序就会出现修复和卸载两个选项我们可以选择卸载">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-26T14:11:14.968Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javaadsdas">
+<meta name="twitter:description" content="Mysql 烦断肠的字符集/反复安装失败作为一个新手在操作数据库的时候，最烦的就是安装数据库，mysql相对来说，比较简单，不象oracle,也许你安装坏了，可能要重做系统。但是mysql在安装时候最烦的就是字符集不统一的问题和安装失败发现，再次安装怎么都安不上。 一、对于解决mysql反复安装失败的问题 1、重新点击安装程序，因为安装过一次，所以这个程序就会出现修复和卸载两个选项我们可以选择卸载">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2018/07/26/mysql/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Kala" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Kala</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">DL &amp; ML</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/test/">test</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/类别/">类别</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/coding/">coding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-coding/">python coding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tag2/">tag2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tg1/">tg1</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ttes2/">ttes2</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/coding/" style="font-size: 13px;">coding</a> <a href="/tags/python/" style="font-size: 13px;">python</a> <a href="/tags/python-coding/" style="font-size: 13px;">python coding</a> <a href="/tags/tag2/" style="font-size: 13px;">tag2</a> <a href="/tags/test/" style="font-size: 13px;">test</a> <a href="/tags/tg1/" style="font-size: 13px;">tg1</a> <a href="/tags/ttes2/" style="font-size: 13px;">ttes2</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/test/">test</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/27/testlatex/" class="title">testlatex</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-27T10:27:27.000Z" itemprop="datePublished">2018-07-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/类别/">类别</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/26/mysql/" class="title">javaadsdas</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-26T03:39:50.000Z" itemprop="datePublished">2018-07-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/python/">python</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/python/test/">test</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/25/python-coding/" class="title">python coding</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-25T11:02:47.000Z" itemprop="datePublished">2018-07-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/25/Python代码片段/" class="title">Python代码片段</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-25T08:07:19.000Z" itemprop="datePublished">2018-07-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/24/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-24T15:34:42.569Z" itemprop="datePublished">2018-07-24</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-mysql" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javaadsdas
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/07/26/mysql/" class="article-date">
+	  <time datetime="2018-07-26T03:39:50.000Z" itemprop="datePublished">2018-07-26</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/类别/">类别</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/tag2/">tag2</a>, <a class="article-tag-link" href="/tags/tg1/">tg1</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/26/mysql/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <h1 id="Mysql-烦断肠的字符集-反复安装失败"><a href="#Mysql-烦断肠的字符集-反复安装失败" class="headerlink" title="Mysql 烦断肠的字符集/反复安装失败"></a>Mysql 烦断肠的字符集/反复安装失败</h1><p>作为一个新手在操作数据库的时候，最烦的就是安装数据库，mysql相对来说，比较简单，不象oracle,也许你安装坏了，可能要重做系统。但是mysql在安装时候最烦的就是字符集不统一的问题和安装失败发现，再次安装怎么都安不上。</p>
+<p><strong>一、对于解决mysql反复安装失败的问题</strong><br> 1、重新点击安装程序，因为安装过一次，所以这个程序就会出现<code>修复</code>和<code>卸载</code>两个选项我们可以选择卸载。<br> 2、如果上一步，未解决，就需要去C盘，和安装目录下手动删除mysql的文件夹，然后再次执行1中的操作。<br> 以上两步操作足够制服安装失败的问题，安装过程中也许会出现端口占用的问题，此时修改一下3306端口就可以，以后再使用的时候记住自己设置的端口。</p>
+<p><strong>二、对于解决mysql字符集不统一导致乱码的问题</strong><br> mysql的字符集有很多，数据表的/数据库的/客户端的/服务器的/文件系统的。。。等等，因为我们中文要使用gbk/gbk132/utf-8的字符集，但是数据库默认的不是utf-8.<br> 1、第一个设置字符集的地方在安装数据库的时候，这一步最为关键，设置的是默认字符集。<br> 2、第二个在创建数据库的时候<br> 3、第三个在创建表的时候【不过一般不会写，会跟随默认的字符集】<br> 如果以上两步都没有设置，没关系，以下操作轻松搞定字符集<br> 1、打开mysql的终端查询字符集设置：</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW VARIABLES LIKE '%char%';  </span><br><span class="line">+--------------------------+---------------------------------------------------------+  </span><br><span class="line">|<span class="string"> Variable_name            </span>|<span class="string"> Value                                                   </span>|<span class="string">  </span></span><br><span class="line"><span class="string">+--------------------------+---------------------------------------------------------+  </span></span><br><span class="line">|<span class="string"> character_set_client     </span>|<span class="string"> utf8                                                    </span>|<span class="string">  </span></span><br><span class="line">|<span class="string"> character_set_connection </span>|<span class="string"> utf8                                                    </span>|<span class="string">  </span></span><br><span class="line">|<span class="string"> character_set_database   </span>|<span class="string"> utf8                                                    </span>|<span class="string">  </span></span><br><span class="line">|<span class="string"> character_set_filesystem </span>|<span class="string"> binary                                                  </span>|<span class="string">  </span></span><br><span class="line">|<span class="string"> character_set_results    </span>|<span class="string"> utf8                                                    </span>|<span class="string">  </span></span><br><span class="line">|<span class="string"> character_set_server     </span>|<span class="string"> utf8                                                    </span>|<span class="string">  </span></span><br><span class="line">|<span class="string"> character_set_system     </span>|<span class="string"> utf8                                                    </span>|<span class="string">  </span></span><br><span class="line">|<span class="string"> character_sets_dir       </span>|<span class="string"> C:\Program Files\MySQL\MySQL Server 5.6\share\charsets\ </span>|<span class="string">  </span></span><br><span class="line"><span class="string">+--------------------------+---------------------------------------------------------+</span></span><br></pre></td></tr></table></figure>
+<p>2、所有的字符集列表，<code>直接使用以下语句修改</code>，如下：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">SET</span> character_set_client <span class="comment">= utf8</span> ;    </span><br><span class="line">mysql&gt; <span class="keyword">SET</span> character_set_connection <span class="comment">= utf8</span> ;     </span><br><span class="line">mysql&gt; <span class="keyword">SET</span> character_set_database <span class="comment">= utf8</span> ;     </span><br><span class="line">mysql&gt; <span class="keyword">SET</span> character_set_results <span class="comment">= utf8</span> ;      </span><br><span class="line">mysql&gt; <span class="keyword">SET</span> character_set_server <span class="comment">= utf8</span> ;        </span><br><span class="line">mysql&gt; <span class="keyword">SET</span> collation_connection <span class="comment">= utf8</span> ;    </span><br><span class="line">mysql&gt; <span class="keyword">SET</span> collation_database <span class="comment">= utf8</span> ;     </span><br><span class="line">mysql&gt; <span class="keyword">SET</span> collation_server <span class="comment">= utf8</span> ;</span><br></pre></td></tr></table></figure>
+<h1 id="Mysql-常见的运算符"><a href="#Mysql-常见的运算符" class="headerlink" title="Mysql 常见的运算符"></a>Mysql 常见的运算符</h1><p>mysql中同样提供了常用的运算符，用于数据的运算，以下内容<a href="http://www.cnblogs.com/emanlee/p/4592337.html" target="_blank" rel="noopener">来源</a><br> <strong>1、算数运算符</strong></p>
+<p>算数运算符常用在对数值数据做算术运算，<code>例如：一个要给员工发薪水，我们记录的是考勤和基本薪资：user_info这张表存储了基本工资base_salary，考勤天数attendance_day，应上班天数all_day,员工的薪资就是 base_salary*(attendance_day/all_day)</code>此时算术运算就起到了作用。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select <span class="number">1</span>+<span class="number">2</span>; 加   </span><br><span class="line">mysql&gt; select <span class="number">2</span><span class="number">-1</span>; 减   </span><br><span class="line">mysql&gt; select <span class="number">2</span>*<span class="number">3</span>; 乘   </span><br><span class="line">mysql&gt; select <span class="number">5</span>/<span class="number">3</span>; 除   </span><br><span class="line">mysql&gt; SELECT <span class="number">5</span> DIV <span class="number">2</span>; 商   </span><br><span class="line">mysql&gt; select <span class="number">5</span>%<span class="number">2</span>,mod(<span class="number">5</span>,<span class="number">2</span>);模</span><br></pre></td></tr></table></figure>
+<p><strong>2、比较运算符</strong></p>
+<p>比较运算符经常会用到，在查询的时候，用做条件的判断，范围的判断，都要用到比较运算符。</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">等于   </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="number">1</span>=<span class="number">0</span>,<span class="number">1</span>=<span class="number">1</span>,<span class="keyword">null</span>=<span class="keyword">null</span>;   </span><br><span class="line">不等于   </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="number">1</span>&lt;&gt;<span class="number">0</span>,<span class="number">1</span>&lt;&gt;<span class="number">1</span>,<span class="keyword">null</span>&lt;&gt;<span class="keyword">null</span>;   </span><br><span class="line">完全等于   </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="number">1</span>&lt;=&gt;<span class="number">1</span>,<span class="number">2</span>&lt;=&gt;<span class="number">0</span>,<span class="number">0</span>&lt;=&gt;<span class="number">0</span>,<span class="keyword">null</span>&lt;=&gt;<span class="keyword">null</span>;   </span><br><span class="line">小于   </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="symbol">'a</span>'&lt;<span class="symbol">'b</span>',<span class="symbol">'a</span>'&lt;<span class="symbol">'a</span>',<span class="symbol">'a</span>'&lt;<span class="symbol">'c</span>',<span class="number">1</span>&lt;<span class="number">2</span>;   </span><br><span class="line">小于等于   </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="symbol">'bdf</span>'&lt;=<span class="symbol">'b</span>',<span class="symbol">'b</span>'&lt;=<span class="symbol">'b</span>',<span class="number">0</span>&lt;<span class="number">1</span>;   </span><br><span class="line">大于   </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="symbol">'a</span>'&gt;<span class="symbol">'b</span>',<span class="symbol">'abc</span>'&gt;<span class="symbol">'a</span>',<span class="number">1</span>&gt;<span class="number">0</span>;   </span><br><span class="line">大于等于   </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="symbol">'a</span>'&gt;=<span class="symbol">'b</span>',<span class="symbol">'abc</span>'&gt;=<span class="symbol">'a</span>',<span class="number">1</span>&gt;=<span class="number">0</span>,<span class="number">1</span>&gt;=<span class="number">1</span>;   </span><br><span class="line">BETWEEN <span class="keyword">AND</span> :在某个范围内  </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="number">10</span> between <span class="number">10</span> <span class="keyword">and</span> <span class="number">20</span>, <span class="number">9</span> between <span class="number">10</span> <span class="keyword">and</span> <span class="number">20</span>;   </span><br><span class="line"><span class="keyword">IN</span>  ：在某个范围内  </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="number">1</span> <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>), <span class="symbol">'t</span>' <span class="keyword">in</span> (<span class="symbol">'t</span>',<span class="symbol">'a</span>',<span class="symbol">'b</span>',<span class="string">'l'</span>,<span class="symbol">'e</span>'), <span class="number">0</span> <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>);   </span><br><span class="line"><span class="keyword">IS</span> <span class="keyword">NULL</span>   </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="number">0</span> <span class="keyword">is</span> <span class="keyword">null</span>,<span class="keyword">null</span> <span class="keyword">is</span> <span class="keyword">null</span>;   </span><br><span class="line"><span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>   </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="number">0</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">null</span>, <span class="keyword">null</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">null</span>;   </span><br><span class="line">LIKE ：模糊匹配  </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="number">123456</span> like '<span class="number">123</span>%', <span class="number">123456</span> like '%<span class="number">123</span>%', <span class="number">123456</span> like '%<span class="number">321</span>%';   </span><br><span class="line">REGEXP :正则匹配  </span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="symbol">'abcdef</span>' regexp <span class="symbol">'ab</span>', <span class="symbol">'abcdefg</span>' regexp <span class="symbol">'k</span>'; <span class="comment">-- 1 0 表示abcdef中匹配到ab一次，abcdefg匹配到k 0次</span></span><br></pre></td></tr></table></figure>
+<p><strong>3、逻辑运算符</strong></p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">非   </span><br><span class="line">mysql&gt; select not <span class="number">0</span>, not <span class="number">1</span>, not null; -- <span class="number">1</span> <span class="number">0</span> (null)  </span><br><span class="line">mysql&gt; select ! <span class="number">0</span>, ! <span class="number">1</span>, ! null; -- <span class="number">1</span> <span class="number">0</span> (null)  </span><br><span class="line">与   </span><br><span class="line">mysql&gt; select (<span class="number">1</span> and <span class="number">1</span>), (<span class="number">0</span> and <span class="number">1</span>), (<span class="number">3</span> and <span class="number">1</span>), (<span class="number">1</span> and null);   </span><br><span class="line">mysql&gt; select (<span class="number">1</span> &amp;&amp; <span class="number">1</span>), (<span class="number">0</span> &amp;&amp; <span class="number">1</span>), (<span class="number">3</span> &amp;&amp; <span class="number">1</span>), (<span class="number">1</span> &amp;&amp; null);   </span><br><span class="line">或   </span><br><span class="line">mysql&gt; select (<span class="number">1</span> or <span class="number">0</span>), (<span class="number">0</span> or <span class="number">0</span>), (<span class="number">1</span> or null), (<span class="number">1</span> or <span class="number">1</span>), (null or null);   </span><br><span class="line">mysql&gt; select (<span class="number">1</span> || <span class="number">0</span>), (<span class="number">0</span> || <span class="number">0</span>), (<span class="number">1</span> || null), (<span class="number">1</span> || <span class="number">1</span>), (null || null);   </span><br><span class="line">异或   </span><br><span class="line">mysql&gt; select (<span class="number">1</span> xor <span class="number">1</span>), (<span class="number">0</span> xor <span class="number">0</span>), (<span class="number">1</span> xor <span class="number">0</span>), (<span class="number">0</span> xor <span class="number">1</span>), (null xor <span class="number">1</span>);   </span><br><span class="line">mysql&gt; select (<span class="number">1</span> ^ <span class="number">1</span>), (<span class="number">0</span> ^ <span class="number">0</span>), (<span class="number">1</span> ^ <span class="number">0</span>), (<span class="number">0</span> ^ <span class="number">1</span>), (null ^ <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>4、位运算符</strong></p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">位与   </span><br><span class="line">mysql&gt; select <span class="number">2</span>&amp;<span class="number">3</span>;   </span><br><span class="line">mysql&gt; select <span class="number">2</span>&amp;<span class="number">3</span>&amp;<span class="number">4</span>;   </span><br><span class="line">位或   </span><br><span class="line">mysql&gt; select <span class="number">2</span>|<span class="number">3</span>;   </span><br><span class="line">位异或   </span><br><span class="line">mysql&gt; select <span class="number">2</span>^<span class="number">3</span>;   </span><br><span class="line">位取反   </span><br><span class="line">mysql&gt; select ~<span class="number">1</span>,~<span class="number">18446744073709551614</span>;   </span><br><span class="line">位右移   </span><br><span class="line">mysql&gt; select <span class="number">100</span>&gt;&gt;<span class="number">3</span>;   </span><br><span class="line">位左移   </span><br><span class="line">mysql&gt; select <span class="number">100</span>&lt;&lt;<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>5.运算符优先级顺序</strong></p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">最高优先级 :=</span><br><span class="line"> <span class="number">1</span> ||, <span class="keyword">OR</span>, <span class="keyword">XOR</span></span><br><span class="line"> <span class="number">2</span> &amp;&amp;, <span class="keyword">AND</span></span><br><span class="line"> <span class="number">3</span> BETWEEN, <span class="keyword">CASE</span>, <span class="keyword">WHEN</span>, <span class="keyword">THEN</span>, <span class="keyword">ELSE</span></span><br><span class="line"> <span class="number">4</span> =, &lt;=&gt;, &gt;=, &gt;, &lt;=, &lt;, &lt;&gt;, !=, <span class="keyword">IS</span>, <span class="keyword">LIKE</span>, REGEXP, <span class="keyword">IN</span></span><br><span class="line"> <span class="number">5</span> |</span><br><span class="line"> <span class="number">6</span> &amp;</span><br><span class="line"> <span class="number">7</span> &lt;&lt;, &gt;&gt;</span><br><span class="line"> <span class="number">8</span> -, +</span><br><span class="line"> <span class="number">9</span> *, /, DIV, %, <span class="keyword">MOD</span></span><br><span class="line"> <span class="number">10</span> ^</span><br><span class="line"> <span class="number">11</span> - (unary minus), ~ (unary bit inversion)</span><br><span class="line"> <span class="number">12</span> !, <span class="keyword">NOT</span></span><br><span class="line"> 最低优先级 <span class="keyword">BINARY</span>, COLLATE</span><br><span class="line"></span><br><span class="line">常用的必须熟悉，不常用的，暂时记者，也许有一天就有用了。。</span><br></pre></td></tr></table></figure>
+<h1 id="Mysql-常用的函数"><a href="#Mysql-常用的函数" class="headerlink" title="Mysql 常用的函数"></a>Mysql 常用的函数</h1><p>MySQL数据库中提供了很丰富的函数。MySQL函数包括数学函数、字符串函数、日期和时间函数、条件判断函数、系统信息函数、加密函数、格式化函数等。通过这些函数，可以简化用户的操作。以下内容<a href="http://www.jb51.net/article/40179.htm" target="_blank" rel="noopener">来源</a></p>
+<p><strong>一、数学函数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ABS(x)                 返回x的绝对值  </span><br><span class="line">BIN(x)                 返回x的二进制（OCT返回八进制，HEX返回十六进制）  </span><br><span class="line">CEILING(x)             返回大于x的最小整数值  </span><br><span class="line">EXP(x)                 返回值e（自然对数的底）的x次方  </span><br><span class="line">FLOOR(x)               返回小于x的最大整数值  </span><br><span class="line">GREATEST(x1,x2,...,xn) 返回集合中最大的值  </span><br><span class="line">LEAST(x1,x2,...,xn)    返回集合中最小的值  </span><br><span class="line">LN(x)                  返回x的自然对数  </span><br><span class="line">LOG(x,y)               返回x的以y为底的对数  </span><br><span class="line">MOD(x,y)               返回x/y的模（余数）  </span><br><span class="line">PI()                   返回pi的值（圆周率）  </span><br><span class="line">RAND()                 返回０到１内的随机值,可以通过提供一个参数(种子)使RAND()随机数生成器生成一个指定的值。  </span><br><span class="line">ROUND(x,y)             返回参数x的四舍五入的有y位小数的值  </span><br><span class="line">SIGN(x)                返回代表数字x的符号的值  </span><br><span class="line">SQRT(x)                返回一个数的平方根  </span><br><span class="line"><span class="keyword">TRUNCATE</span>(x,y)          返回数字x截短为y位小数的结果</span><br></pre></td></tr></table></figure>
+<p><strong>二、聚合函数(常用于GROUP BY从句的SELECT查询中)</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AVG(col)               返回指定列的平均值  </span><br><span class="line">COUNT(col)             返回指定列中非NULL值的个数  </span><br><span class="line">MIN(col)               返回指定列的最小值  </span><br><span class="line">MAX(col)               返回指定列的最大值  </span><br><span class="line">SUM(col)               返回指定列的所有值之和  </span><br><span class="line">GROUP_CONCAT(col)      返回由属于一组的列值连接组合而成的结果</span><br></pre></td></tr></table></figure>
+<p><strong>三、字符串函数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ASCII(char)            返回字符的ASCII码值  </span><br><span class="line">BIT_LENGTH(str)        返回字符串的比特长度  </span><br><span class="line">CONCAT(s1,s2...,sn)    将s1,s2...,sn连接成字符串  </span><br><span class="line">CONCAT_WS(sep,s1,s2...,sn)将s1,s2...,sn连接成字符串，并用sep字符间隔  </span><br><span class="line"><span class="keyword">INSERT</span>(<span class="keyword">str</span>,x,y,<span class="keyword">instr</span>)  将字符串<span class="keyword">str</span>从第x位置开始，y个字符长的子串替换为字符串<span class="keyword">instr</span>，返回结果  </span><br><span class="line">FIND_IN_SET(<span class="keyword">str</span>,<span class="keyword">list</span>)  分析逗号分隔的<span class="keyword">list</span>列表，如果发现<span class="keyword">str</span>，返回<span class="keyword">str</span>在<span class="keyword">list</span>中的位置  </span><br><span class="line"><span class="keyword">LCASE</span>(<span class="keyword">str</span>)或<span class="keyword">LOWER</span>(<span class="keyword">str</span>) 返回将字符串<span class="keyword">str</span>中所有字符改变为小写后的结果  </span><br><span class="line"><span class="keyword">LEFT</span>(<span class="keyword">str</span>,x)            返回字符串<span class="keyword">str</span>中最左边的x个字符  </span><br><span class="line"><span class="keyword">LENGTH</span>(s)              返回字符串<span class="keyword">str</span>中的字符数  </span><br><span class="line"><span class="keyword">LTRIM</span>(<span class="keyword">str</span>)             从字符串<span class="keyword">str</span>中切掉开头的空格  </span><br><span class="line"><span class="keyword">POSITION</span>(<span class="keyword">substr</span>,<span class="keyword">str</span>)   返回子串<span class="keyword">substr</span>在字符串<span class="keyword">str</span>中第一次出现的位置  </span><br><span class="line">QUOTE(<span class="keyword">str</span>)             用反斜杠转义<span class="keyword">str</span>中的单引号  </span><br><span class="line"><span class="keyword">REPEAT</span>(<span class="keyword">str</span>,srchstr,rplcstr)返回字符串<span class="keyword">str</span>重复x次的结果  </span><br><span class="line"><span class="keyword">REVERSE</span>(<span class="keyword">str</span>)           返回颠倒字符串<span class="keyword">str</span>的结果  </span><br><span class="line"><span class="keyword">RIGHT</span>(<span class="keyword">str</span>,x)           返回字符串<span class="keyword">str</span>中最右边的x个字符  </span><br><span class="line"><span class="keyword">RTRIM</span>(<span class="keyword">str</span>)             返回字符串<span class="keyword">str</span>尾部的空格  </span><br><span class="line"><span class="keyword">STRCMP</span>(s1,s2)          比较字符串s1和s2  </span><br><span class="line"><span class="keyword">TRIM</span>(<span class="keyword">str</span>)              去除字符串首部和尾部的所有空格  </span><br><span class="line"><span class="keyword">UCASE</span>(<span class="keyword">str</span>)或<span class="keyword">UPPER</span>(<span class="keyword">str</span>) 返回将字符串<span class="keyword">str</span>中所有字符转变为大写后的结果</span><br></pre></td></tr></table></figure>
+<p><strong>四、日期和时间函数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">CURDATE()或CURRENT_DATE()             返回当前的日期  </span><br><span class="line">CURTIME()或CURRENT_TIME()             返回当前的时间  </span><br><span class="line">DATE_ADD(date,INTERVAL int keyword)   返回日期date加上间隔时间int的结果(int必须按照关键字进行格式化),如：SELECTDATE_ADD(CURRENT_DATE,INTERVAL 6 MONTH);  </span><br><span class="line">DATE_FORMAT(date,fmt)                 依照指定的fmt格式格式化日期date值  </span><br><span class="line">DATE_SUB(date,INTERVAL int keyword)   返回日期date加上间隔时间int的结果(int必须按照关键字进行格式化),如：SELECTDATE_SUB(CURRENT_DATE,INTERVAL 6 MONTH);  </span><br><span class="line">DAYOFWEEK(date)                       返回date所代表的一星期中的第几天(1~7)  </span><br><span class="line">DAYOFMONTH(date)                      返回date是一个月的第几天(1~31)  </span><br><span class="line">DAYOFYEAR(date)                       返回date是一年的第几天(1~366)  </span><br><span class="line">DAYNAME(date)                         返回date的星期名，如：<span class="keyword">SELECT</span> <span class="keyword">DAYNAME</span>(<span class="keyword">CURRENT_DATE</span>);  </span><br><span class="line">FROM_UNIXTIME(ts,fmt)                 根据指定的fmt格式，格式化UNIX时间戳ts  </span><br><span class="line">HOUR(time)                            返回time的小时值(0~23)  </span><br><span class="line">MINUTE(time)                          返回time的分钟值(0~59)  </span><br><span class="line">MONTH(date)                           返回date的月份值(1~12)  </span><br><span class="line">MONTHNAME(date)                       返回date的月份名，如：<span class="keyword">SELECT</span> MONTHNAME(<span class="keyword">CURRENT_DATE</span>);  </span><br><span class="line">NOW()                                 返回当前的日期和时间  </span><br><span class="line">QUARTER(date)                         返回date在一年中的季度(1~4)，如<span class="keyword">SELECT</span> <span class="keyword">QUARTER</span>(<span class="keyword">CURRENT_DATE</span>);  </span><br><span class="line">WEEK(date)                            返回日期date为一年中第几周(0~53)  </span><br><span class="line">YEAR(date)                            返回日期date的年份(1000~9999)  </span><br><span class="line"></span><br><span class="line">返回当前日期：<span class="keyword">SELECT</span> FROM_UNIXTIME(<span class="keyword">UNIX_TIMESTAMP</span>());  </span><br><span class="line">mysql&gt; SELECT FROM_UNIXTIME(UNIX_TIMESTAMP());  </span><br><span class="line">+<span class="comment">---------------------------------+  </span></span><br><span class="line">| FROM_UNIXTIME(UNIX_TIMESTAMP()) |  </span><br><span class="line">+<span class="comment">---------------------------------+  </span></span><br><span class="line">| 2017-09-20 17:44:50             |  </span><br><span class="line">+<span class="comment">---------------------------------+</span></span><br></pre></td></tr></table></figure>
+<p><strong>五、加密函数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">AES_ENCRYPT(str,key)  返回用密钥key对字符串str利用高级加密标准算法加密后的结果，调用AES_ENCRYPT的结果是一个二进制字符串，以BLOB类型存储  </span><br><span class="line">AES_DECRYPT(str,key)  返回用密钥key对字符串str利用高级加密标准算法解密后的结果  </span><br><span class="line">DECODE(str,key)       使用key作为密钥解密加密字符串str  </span><br><span class="line">ENCRYPT(str,salt)     使用UNIXcrypt()函数，用关键词salt(一个可以惟一确定口令的字符串，就像钥匙一样)加密字符串str  </span><br><span class="line">ENCODE(str,key)       使用key作为密钥加密字符串str，调用ENCODE()的结果是一个二进制字符串，它以BLOB类型存储  </span><br><span class="line">MD5()                 计算字符串str的MD5校验和  </span><br><span class="line">PASSWORD(str)         返回字符串str的加密版本，这个加密过程是不可逆转的，和UNIX密码加密过程使用不同的算法。  </span><br><span class="line">SHA()                 计算字符串str的安全散列算法(SHA)校验  </span><br><span class="line"></span><br><span class="line">mysql&gt; select md5('123213')  </span><br><span class="line">+<span class="comment">----------------------------------+  </span></span><br><span class="line">| md5('123213')                    |  </span><br><span class="line">+<span class="comment">----------------------------------+  </span></span><br><span class="line">| 8ad3fac6c6b3528499d347d924443abb |  </span><br><span class="line">+<span class="comment">----------------------------------+</span></span><br></pre></td></tr></table></figure>
+<p><strong> 六、MySQL控制流函数：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CASE WHEN[test1] THEN [result1]...ELSE [default] <span class="keyword">END</span>      如果testN是真，则返回resultN，否则返回<span class="keyword">default</span>  </span><br><span class="line"><span class="keyword">CASE</span> [<span class="keyword">test</span>] <span class="keyword">WHEN</span>[val1] <span class="keyword">THEN</span> [<span class="keyword">result</span>]...ELSE [<span class="keyword">default</span>]<span class="keyword">END</span>  如果<span class="keyword">test</span>和valN相等，则返回resultN，否则返回<span class="keyword">default</span>  </span><br><span class="line"><span class="keyword">IF</span>(<span class="keyword">test</span>,t,f)      如果<span class="keyword">test</span>是真，返回t；否则返回f  </span><br><span class="line"><span class="keyword">IFNULL</span>(arg1,arg2) 如果arg1不是空，返回arg1，否则返回arg2  </span><br><span class="line"><span class="keyword">NULLIF</span>(arg1,arg2) 如果arg1=arg2返回<span class="literal">NULL</span>；否则返回arg1</span><br></pre></td></tr></table></figure>
+<p>这些函数的第一个是IFNULL()，它有两个参数，并且对第一个参数进行判断。如果第一个参数不是NULL，函数就会向调用者返回第一个参数；如果是NULL,将返回第二个参数。</p>
+<p><strong>七、格式化函数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">DATE_FORMAT(date,fmt)  依照字符串fmt格式化日期date值  </span><br><span class="line">FORMAT(x,y)            把x格式化为以逗号隔开的数字序列，y是结果的小数位数  </span><br><span class="line">INET_ATON(ip)          返回IP地址的数字表示  </span><br><span class="line">INET_NTOA(num)         返回数字所代表的IP地址  </span><br><span class="line">TIME_FORMAT(time,fmt)  依照字符串fmt格式化时间time值  </span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT DATE_FORMAT(NOW(),'%W,%D %M %Y %r');  </span><br><span class="line">+<span class="comment">-------------------------------------------+  </span></span><br><span class="line">| DATE_FORMAT(NOW(),'%W,%D %M %Y %r')       |  </span><br><span class="line">+<span class="comment">-------------------------------------------+  </span></span><br><span class="line">| Wednesday,20th September 2017 05:54:02 PM |  </span><br><span class="line">+<span class="comment">-------------------------------------------+</span></span><br></pre></td></tr></table></figure>
+<p>其中最简单的是FORMAT()函数，它可以把大的数值格式化为以逗号间隔的易读的序列。</p>
+<p><strong>八、类型转化函数</strong></p>
+<p>为了进行数据类型转化，MySQL提供了CAST()函数，它可以把一个值转化为指定的数据类型。类型有：BINARY,CHAR,DATE,TIME,DATETIME,SIGNED,UNSIGNED</p>
+<p><strong>九、系统信息函数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DATABASE()               返回当前数据库名  </span><br><span class="line">BENCHMARK(count,expr)    将表达式expr重复运行count次  </span><br><span class="line">CONNECTION_ID()          返回当前客户的连接ID  </span><br><span class="line">FOUND_ROWS()             返回最后一个<span class="keyword">SELECT</span>查询进行检索的总行数  </span><br><span class="line"><span class="keyword">USER</span>()或<span class="keyword">SYSTEM_USER</span>()    返回当前登陆用户名  </span><br><span class="line"><span class="keyword">VERSION</span>()                返回MySQL服务器的版本</span><br></pre></td></tr></table></figure>
+<h4 id="测试列表"><a href="#测试列表" class="headerlink" title="测试列表"></a>测试列表</h4><ul>
+<li>为了进行数据类型转化</li>
+<li>为了进行数据类型转化</li>
+<li>为了进行数据类型转化</li>
+</ul>
+<ol>
+<li>为了进行数据类型转化</li>
+<li>江上如花<br>…待续。。。</li>
+</ol>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2018/07/26/mysql/" title="javaadsdas" target="_blank" rel="external">http://yoursite.com/2018/07/26/mysql/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">Kala</span><small class="ml-1x">DL &amp; ML</small></a></h3>
+        <div>Do Best Kala</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="vcomments"></div>
+
+    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/07/27/testlatex/" title="testlatex"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/07/25/python-coding/" title="python coding"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
+    
+    
+
+
+
+</body>
+</html>
