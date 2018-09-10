@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://nextnight.github.io/2018/09/10/Numpy%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2018-09-10T14:53:03.291Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nextnight.github.io/2018/09/10/Python%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</loc>
     
     <lastmod>2018-09-10T14:28:41.371Z</lastmod>
@@ -30,13 +37,6 @@
   </url>
   
   <url>
-    <loc>http://nextnight.github.io/links/index.html</loc>
-    
-    <lastmod>2018-07-27T09:13:16.682Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://nextnight.github.io/repository/index.html</loc>
     
     <lastmod>2018-07-27T09:13:16.682Z</lastmod>
@@ -51,6 +51,20 @@
   </url>
   
   <url>
+    <loc>http://nextnight.github.io/links/index.html</loc>
+    
+    <lastmod>2018-07-27T09:13:16.682Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://nextnight.github.io/categories/index.html</loc>
+    
+    <lastmod>2018-07-27T09:13:16.681Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://nextnight.github.io/about/index.html</loc>
     
     <lastmod>2018-07-27T09:13:16.681Z</lastmod>
@@ -59,13 +73,6 @@
   
   <url>
     <loc>http://nextnight.github.io/books/index.html</loc>
-    
-    <lastmod>2018-07-27T09:13:16.681Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://nextnight.github.io/categories/index.html</loc>
     
     <lastmod>2018-07-27T09:13:16.681Z</lastmod>
     

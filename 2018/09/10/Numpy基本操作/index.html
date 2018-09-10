@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>数据结构与算法 | Kala</title>
-  <meta name="description" content="是时候沉下心来学习一波数据结构与算法了，好的算法能够轻松的而解决各种难题，而好的数据结构是实现算法的前提，算法设计依托与不同的数据结构，同样，算法也是解决不同形式的数据问题。计划步骤：  1、深入操作基本数据结构 2、深入回顾基础算法 3、深入理解基本算法思想 4、算法刷题，书籍阅读  算法思想 递归  穷举  递推  贪心  回溯  分治  动态规划   数据结构 数组  链表  栈  队列">
-<meta name="keywords" content="数据结构,算法">
+  <title>Numpy基本操作 | Kala</title>
+  <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384import numpy as np&quot;&quot;&quot;numpy的基本应用1、四个属性">
+<meta name="keywords" content="Python,Numpy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构与算法">
-<meta property="og:url" content="http://nextnight.github.io/2018/08/14/数据结构与算法/index.html">
+<meta property="og:title" content="Numpy基本操作">
+<meta property="og:url" content="http://nextnight.github.io/2018/09/10/Numpy基本操作/index.html">
 <meta property="og:site_name" content="Kala">
-<meta property="og:description" content="是时候沉下心来学习一波数据结构与算法了，好的算法能够轻松的而解决各种难题，而好的数据结构是实现算法的前提，算法设计依托与不同的数据结构，同样，算法也是解决不同形式的数据问题。计划步骤：  1、深入操作基本数据结构 2、深入回顾基础算法 3、深入理解基本算法思想 4、算法刷题，书籍阅读  算法思想 递归  穷举  递推  贪心  回溯  分治  动态规划   数据结构 数组  链表  栈  队列">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384import numpy as np&quot;&quot;&quot;numpy的基本应用1、四个属性">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-27T06:56:00.076Z">
+<meta property="og:updated_time" content="2018-09-10T14:53:03.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构与算法">
-<meta name="twitter:description" content="是时候沉下心来学习一波数据结构与算法了，好的算法能够轻松的而解决各种难题，而好的数据结构是实现算法的前提，算法设计依托与不同的数据结构，同样，算法也是解决不同形式的数据问题。计划步骤：  1、深入操作基本数据结构 2、深入回顾基础算法 3、深入理解基本算法思想 4、算法刷题，书籍阅读  算法思想 递归  穷举  递推  贪心  回溯  分治  动态规划   数据结构 数组  链表  栈  队列">
+<meta name="twitter:title" content="Numpy基本操作">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384import numpy as np&quot;&quot;&quot;numpy的基本应用1、四个属性">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://nextnight.github.io/2018/08/14/数据结构与算法/index.html">
+  <link rel="canonical" href="http://nextnight.github.io/2018/09/10/Numpy基本操作/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Kala" type="application/atom+xml">
   
@@ -381,25 +381,16 @@
 
   
   
-<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    <nav id="toc" class="article-toc">
-      <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法思想"><span class="toc-number">1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构"><span class="toc-number">2.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础算法"><span class="toc-number">3.</span> <span class="toc-text">基础算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#排序"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查找"><span class="toc-number">3.0.0.2.</span> <span class="toc-text">查找</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#经典算法"><span class="toc-number">4.</span> <span class="toc-text">经典算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#海量数据处理"><span class="toc-number">5.</span> <span class="toc-text">海量数据处理</span></a></li></ol>
-    </nav>
-  </div>
-</aside>
-
 <main class="main" role="main">
   <div class="content">
-  <article id="post-数据结构与算法" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Numpy基本操作" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      数据结构与算法
+      Numpy基本操作
     </h1>
   
 
@@ -407,151 +398,32 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2018/08/14/数据结构与算法/" class="article-date">
-	  <time datetime="2018-08-14T03:57:08.000Z" itemprop="datePublished">2018-08-14</time>
+	<a href="/2018/09/10/Numpy基本操作/" class="article-date">
+	  <time datetime="2018-09-10T14:45:39.000Z" itemprop="datePublished">2018-09-10</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/算法/">算法</a>
+    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/Numpy/">Numpy</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/数据结构/">数据结构</a>, <a class="article-tag-link" href="/tags/算法/">算法</a>
+	<a class="article-tag-link" href="/tags/Numpy/">Numpy</a>, <a class="article-tag-link" href="/tags/Python/">Python</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/08/14/数据结构与算法/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/10/Numpy基本操作/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <p>是时候沉下心来学习一波数据结构与算法了，好的算法能够轻松的而解决各种难题，而好的数据结构是实现算法的前提，算法设计依托与不同的数据结构，同样，算法也是解决不同形式的数据问题。计划步骤：</p>
-<ul>
-<li>1、深入操作基本数据结构</li>
-<li>2、深入回顾基础算法</li>
-<li>3、深入理解基本算法思想</li>
-<li>4、算法刷题，书籍阅读</li>
-</ul>
-<h1 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h1><ul>
-<li><p>递归</p>
-</li>
-<li><p>穷举</p>
-</li>
-<li><p>递推</p>
-</li>
-<li><p>贪心</p>
-</li>
-<li><p>回溯</p>
-</li>
-<li><p>分治</p>
-</li>
-<li><p>动态规划</p>
-</li>
-</ul>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><ul>
-<li><p>数组</p>
-</li>
-<li><p>链表</p>
-</li>
-<li><p>栈</p>
-</li>
-<li><p>队列</p>
-</li>
-<li><p>字符串</p>
-</li>
-<li><p>🌲树</p>
-</li>
-<li><p>trie树</p>
-</li>
-<li><p>哈希</p>
-</li>
-<li><p>图</p>
-</li>
-</ul>
-<h1 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h1><h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><ul>
-<li><p>交换排序</p>
-<ul>
-<li><p>选择排序</p>
-</li>
-<li><p>插入排序</p>
-</li>
-<li><p>冒泡排序</p>
-</li>
-<li><p>快速排序</p>
-</li>
-<li><p>堆排序</p>
-</li>
-<li><p>希尔排序</p>
-</li>
-<li><p>归并排序</p>
-</li>
-</ul>
-</li>
-<li><p>线性排序</p>
-<ul>
-<li>桶排序</li>
-</ul>
-</li>
-</ul>
-<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><ul>
-<li><p>顺序查找</p>
-</li>
-<li><p>二分查找</p>
-</li>
-<li><p>分块查找</p>
-</li>
-<li><p>动态查找</p>
-<ul>
-<li><p>二叉排序树</p>
-</li>
-<li><p>平衡二叉树</p>
-</li>
-<li><p>B树，B+树</p>
-</li>
-</ul>
-</li>
-<li><p>Hash查找</p>
-</li>
-</ul>
-<h1 id="经典算法"><a href="#经典算法" class="headerlink" title="经典算法"></a>经典算法</h1><ul>
-<li><p>快速排序</p>
-</li>
-<li><p>BFS/DFS</p>
-</li>
-<li><p>KMP</p>
-</li>
-<li><p>A*寻路</p>
-</li>
-<li><p>Dijkstra</p>
-</li>
-<li><p>遗传算法</p>
-</li>
-<li><p>动态规划</p>
-</li>
-</ul>
-<h1 id="海量数据处理"><a href="#海量数据处理" class="headerlink" title="海量数据处理"></a>海量数据处理</h1><ul>
-<li><p>Hash</p>
-</li>
-<li><p>Bitmap</p>
-</li>
-<li><p>Bloom filter</p>
-</li>
-<li><p>Trie树</p>
-</li>
-<li><p>Index</p>
-</li>
-<li><p>Inverted Index</p>
-</li>
-<li><p>simhash</p>
-</li>
-</ul>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="string">"""numpy的基本应用</span></span><br><span class="line"><span class="string">1、四个属性</span></span><br><span class="line"><span class="string">    ndim:获取数据的维度数</span></span><br><span class="line"><span class="string">    shape:收取数据的维度</span></span><br><span class="line"><span class="string">    dtype:获取数据的类型</span></span><br><span class="line"><span class="string">    size:</span></span><br><span class="line"><span class="string">2、N个方法</span></span><br><span class="line"><span class="string">    1、zeros,ones,empty,arange</span></span><br><span class="line"><span class="string">    2、max,min,std,mean,sum,var,median,cumsum</span></span><br><span class="line"><span class="string">    3、astype,reshape</span></span><br><span class="line"><span class="string">    4、argmax,argmin,argsort</span></span><br><span class="line"><span class="string">    5、all,any,fill,where，diff</span></span><br><span class="line"><span class="string">    6、vstack,hstack</span></span><br><span class="line"><span class="string">    7、unique</span></span><br><span class="line"><span class="string">    8、load,save:操作文件</span></span><br><span class="line"><span class="string">    9、insert,arange,reshape</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numpy_filed</span><span class="params">()</span>:</span></span><br><span class="line">    ll = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">                   [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>]])</span><br><span class="line">    print(ll)</span><br><span class="line">    print(ll.ndim)  <span class="comment"># 2；表示2个维度</span></span><br><span class="line">    print(ll.shape)  <span class="comment"># (5,):表示五个元素</span></span><br><span class="line">    print(ll.dtype)  <span class="comment"># 元素类型int64:表示数据类型</span></span><br><span class="line">    print(ll.size)  <span class="comment"># 10：元素个数</span></span><br><span class="line">    print(type(ll))  <span class="comment"># 对象类型&lt;class 'numpy.ndarray'&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numpy_method</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    max,min,std,mean,sum,var,median,cumsum</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    astype:转换数据类型</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    argmax,argmin,argsort</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    all,any,fill,where</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    vstack,hstack</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    load,save:操作文件</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    insert,arange,reshape</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    ll = np.array([[<span class="number">1</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">                   [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>]])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># max,min,std,mean,sum,var,median,cumsum</span></span><br><span class="line">    print(ll.max())        <span class="comment"># 全局最大值</span></span><br><span class="line">    print(ll.max(axis=<span class="number">1</span>))  <span class="comment"># axis=1：行最大值 [6 7]</span></span><br><span class="line">    print(ll.max(axis=<span class="number">0</span>))  <span class="comment"># axis=0 列最大 [2 4 4 5 7]</span></span><br><span class="line">    print(ll.cumsum())     <span class="comment"># 前所有项的和组成的序列</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># astype: 转换数据类型</span></span><br><span class="line">    ll = ll.astype(dtype=np.float64)</span><br><span class="line">    print(ll.dtype)        <span class="comment"># float64</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># argmax, argmin, argsort</span></span><br><span class="line">    print(ll.argmax(axis=<span class="number">1</span>)) <span class="comment"># axis=1 返回每行的最大数值的索引[4,4]</span></span><br><span class="line">    print(ll.argmin(axis=<span class="number">0</span>)) <span class="comment"># axis=0 返回每列的最小值的索引 [1 1 1 0 1]</span></span><br><span class="line">    print(ll.argsort(axis=<span class="number">0</span>))<span class="comment"># 按行排序返回排序后的索引，未指定排序的列，就是返回所有的列排序的结果</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># all,any,fill,where，diff</span></span><br><span class="line">    <span class="comment"># all()全部满足条件，any()存在满足条件的</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># vstack,hstack</span></span><br><span class="line">    p1 = np.zeros((<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    p2 = np.ones((<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    print(<span class="string">"纵向叠加：\n"</span>,np.vstack((p1,p2))) <span class="comment"># 数据拼接，维度不变</span></span><br><span class="line">    print(<span class="string">"横向叠加：\n"</span>,np.hstack((p1,p2))) <span class="comment"># 数据连接，行数不变</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># unique：找出唯一值并返回排序后的结果</span></span><br><span class="line">    print(np.unique(ll))      <span class="comment"># [1. 2. 3. 4. 5. 6. 7.]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    numpy_filed()</span><br><span class="line">    numpy_method()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -561,7 +433,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong align="center">If not me,who? If not now.when?</strong>
-      <!-- <a href="http://nextnight.github.io/2018/08/14/数据结构与算法/" title="数据结构与算法" target="_blank" rel="external">http://nextnight.github.io/2018/08/14/数据结构与算法/</a> -->
+      <!-- <a href="http://nextnight.github.io/2018/09/10/Numpy基本操作/" title="Numpy基本操作" target="_blank" rel="external">http://nextnight.github.io/2018/09/10/Numpy基本操作/</a> -->
     </li>
     
     
@@ -608,24 +480,11 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2018/09/10/Python代码片段/" title="Python代码片段"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2018/07/31/algorithm-array/" title="algorithm-array"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2018/09/10/Python代码片段/" title="Python代码片段"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
-    
-    <li class="toggle-toc">
-      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
-        <span>[&nbsp;</span><span>Catalogue</span>
-        <i class="text-collapsed icon icon-anchor"></i>
-        <i class="text-in icon icon-close"></i>
-        <span>]</span>
-      </a>
-    </li>
     
   </ul>
   
