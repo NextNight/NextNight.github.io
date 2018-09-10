@@ -18,18 +18,18 @@
   
   
   <title>Python代码片段 | Kala</title>
-  <meta name="description" content="多变量赋值 1a, b, c, d = 0, 1, 2, 3  列表赋值 12names = [&quot;ami&quot;, &quot;kimi&quot;, &quot;jsm&quot;]a, b, c = names  条件表达式 12x = 8d = x if x &amp;gt; 5 else 10  列表推导式 a = [i for i in range(1000) if i % 2 == 0]   条件判断:不是用and x = 90 if">
+  <meta name="description" content="多变量赋值1a, b, c, d = 0, 1, 2, 3 列表赋值12names = [&quot;ami&quot;, &quot;kimi&quot;, &quot;jsm&quot;]a, b, c = names 条件表达式12x = 8d = x if x &amp;gt; 5 else 10 列表推导式1a = [i for i in range(1000) if i % 2 == 0] 条件判断:不是用and12x = 90if 80 &amp;lt; x">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python代码片段">
 <meta property="og:url" content="http://nextnight.github.io/2018/09/10/Python代码片段/index.html">
 <meta property="og:site_name" content="Kala">
-<meta property="og:description" content="多变量赋值 1a, b, c, d = 0, 1, 2, 3  列表赋值 12names = [&quot;ami&quot;, &quot;kimi&quot;, &quot;jsm&quot;]a, b, c = names  条件表达式 12x = 8d = x if x &amp;gt; 5 else 10  列表推导式 a = [i for i in range(1000) if i % 2 == 0]   条件判断:不是用and x = 90 if">
+<meta property="og:description" content="多变量赋值1a, b, c, d = 0, 1, 2, 3 列表赋值12names = [&quot;ami&quot;, &quot;kimi&quot;, &quot;jsm&quot;]a, b, c = names 条件表达式12x = 8d = x if x &amp;gt; 5 else 10 列表推导式1a = [i for i in range(1000) if i % 2 == 0] 条件判断:不是用and12x = 90if 80 &amp;lt; x">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-10T14:17:25.642Z">
+<meta property="og:updated_time" content="2018-09-10T14:25:07.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python代码片段">
-<meta name="twitter:description" content="多变量赋值 1a, b, c, d = 0, 1, 2, 3  列表赋值 12names = [&quot;ami&quot;, &quot;kimi&quot;, &quot;jsm&quot;]a, b, c = names  条件表达式 12x = 8d = x if x &amp;gt; 5 else 10  列表推导式 a = [i for i in range(1000) if i % 2 == 0]   条件判断:不是用and x = 90 if">
+<meta name="twitter:description" content="多变量赋值1a, b, c, d = 0, 1, 2, 3 列表赋值12names = [&quot;ami&quot;, &quot;kimi&quot;, &quot;jsm&quot;]a, b, c = names 条件表达式12x = 8d = x if x &amp;gt; 5 else 10 列表推导式1a = [i for i in range(1000) if i % 2 == 0] 条件判断:不是用and12x = 90if 80 &amp;lt; x">
   <!-- Canonical links -->
   <link rel="canonical" href="http://nextnight.github.io/2018/09/10/Python代码片段/index.html">
   
@@ -370,7 +370,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多变量赋值"><span class="toc-number">1.</span> <span class="toc-text"> 多变量赋值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列表赋值"><span class="toc-number">2.</span> <span class="toc-text"> 列表赋值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#条件表达式"><span class="toc-number">3.</span> <span class="toc-text"> 条件表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列表推导式"><span class="toc-number">4.</span> <span class="toc-text"> 列表推导式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#条件判断不是用and"><span class="toc-number">5.</span> <span class="toc-text"> 条件判断:不是用and</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断是否在不在某列表字符串"><span class="toc-number">6.</span> <span class="toc-text"> 判断是否在/不在某列表,字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#隐含类型转换判空"><span class="toc-number">7.</span> <span class="toc-text"> 隐含类型转换判空</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断多个条件是否成立anyall"><span class="toc-number">8.</span> <span class="toc-text"> 判断多个条件是否成立:any，all</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列表推导式过滤"><span class="toc-number">9.</span> <span class="toc-text"> 列表推导式+过滤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同时获取下标和数据enumerate"><span class="toc-number">10.</span> <span class="toc-text"> 同时获取下标和数据：enumerate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程sleep"><span class="toc-number">11.</span> <span class="toc-text"> 线程sleep</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#print-输出覆盖"><span class="toc-number">12.</span> <span class="toc-text"> print 输出覆盖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda匿名函数"><span class="toc-number">13.</span> <span class="toc-text"> lambda匿名函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yield生成器收集系列值不需要return"><span class="toc-number">14.</span> <span class="toc-text"> yield生成器收集系列值，不需要return</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#装饰器给函数添加插入日志性能测试等非核心功能"><span class="toc-number">15.</span> <span class="toc-text"> 装饰器给函数添加插入日志，性能测试等非核心功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-copy"><span class="toc-number">16.</span> <span class="toc-text"> 3、copy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31赋值指向同一块地址"><span class="toc-number">16.0.1.</span> <span class="toc-text"> 3.1：赋值：指向同一块地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32浅拷贝指向不同的引用但是不同引用指向相同内容只拷贝对象但不拷贝对象内部的对象"><span class="toc-number">16.0.2.</span> <span class="toc-text"> 3.2：浅拷贝：指向不同的引用，但是不同引用指向相同内容(只拷贝对象，但不拷贝对象内部的对象)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33深拷贝对象及对象内部的对象都复制一份"><span class="toc-number">16.0.3.</span> <span class="toc-text"> 3.3：深拷贝：对象及对象内部的对象都复制一份</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多变量赋值"><span class="toc-number">1.</span> <span class="toc-text">多变量赋值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列表赋值"><span class="toc-number">2.</span> <span class="toc-text">列表赋值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#条件表达式"><span class="toc-number">3.</span> <span class="toc-text">条件表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列表推导式"><span class="toc-number">4.</span> <span class="toc-text">列表推导式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#条件判断-不是用and"><span class="toc-number">5.</span> <span class="toc-text">条件判断:不是用and</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断是否在-不在某列表-字符串"><span class="toc-number">6.</span> <span class="toc-text">判断是否在/不在某列表,字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#隐含类型转换判空"><span class="toc-number">7.</span> <span class="toc-text">隐含类型转换判空</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断多个条件是否成立-any，all"><span class="toc-number">8.</span> <span class="toc-text">判断多个条件是否成立:any，all</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#列表推导式-过滤"><span class="toc-number">9.</span> <span class="toc-text">列表推导式+过滤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同时获取下标和数据：enumerate"><span class="toc-number">10.</span> <span class="toc-text">同时获取下标和数据：enumerate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程sleep"><span class="toc-number">11.</span> <span class="toc-text">线程sleep</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#print-输出覆盖"><span class="toc-number">12.</span> <span class="toc-text">print 输出覆盖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda匿名函数"><span class="toc-number">13.</span> <span class="toc-text">lambda匿名函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yield生成器收集系列值，不需要return"><span class="toc-number">14.</span> <span class="toc-text">yield生成器收集系列值，不需要return</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#装饰器给函数添加插入日志，性能测试等非核心功能"><span class="toc-number">15.</span> <span class="toc-text">装饰器给函数添加插入日志，性能测试等非核心功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、-copy"><span class="toc-number">16.</span> <span class="toc-text">3、==========copy==========</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1：赋值：指向同一块地址"><span class="toc-number">16.0.1.</span> <span class="toc-text">3.1：赋值：指向同一块地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2：浅拷贝：指向不同的引用，但是不同引用指向相同内容-只拷贝对象，但不拷贝对象内部的对象"><span class="toc-number">16.0.2.</span> <span class="toc-text">3.2：浅拷贝：指向不同的引用，但是不同引用指向相同内容(只拷贝对象，但不拷贝对象内部的对象)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3：深拷贝：对象及对象内部的对象都复制一份"><span class="toc-number">16.0.3.</span> <span class="toc-text">3.3：深拷贝：对象及对象内部的对象都复制一份</span></a></li></ol></li></ol></li></ol>
     </nav>
   </div>
 </aside>
@@ -417,118 +417,25 @@
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <h1 id="多变量赋值"><a class="markdownIt-Anchor" href="#多变量赋值"></a> 多变量赋值</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b, c, d = <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h1 id="列表赋值"><a class="markdownIt-Anchor" href="#列表赋值"></a> 列表赋值</h1>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names = [<span class="string">"ami"</span>, <span class="string">"kimi"</span>, <span class="string">"jsm"</span>]</span><br><span class="line"><span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c = names</span><br></pre></td></tr></table></figure>
-<h1 id="条件表达式"><a class="markdownIt-Anchor" href="#条件表达式"></a> 条件表达式</h1>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 8</span><br><span class="line">d = x if x &gt; 5 <span class="keyword">else</span> 10</span><br></pre></td></tr></table></figure>
-<h1 id="列表推导式"><a class="markdownIt-Anchor" href="#列表推导式"></a> 列表推导式</h1>
-<pre><code>a = [i for i in range(1000) if i % 2 == 0]
-</code></pre>
-<h1 id="条件判断不是用and"><a class="markdownIt-Anchor" href="#条件判断不是用and"></a> 条件判断:不是用and</h1>
-<pre><code>x = 90
-if 80 &lt; x &lt; 100: print(x)
-</code></pre>
-<h1 id="判断是否在不在某列表字符串"><a class="markdownIt-Anchor" href="#判断是否在不在某列表字符串"></a> 判断是否在/不在某列表,字符串</h1>
-<pre><code>if 1 in [1, 2, 3]: print(1)
-if 1 not in [1, 2, 3]: print(0)
-
-if '1' in &quot;123&quot;: print(2)
-if '1' not in &quot;123&quot;: print(2)
-</code></pre>
-<h1 id="隐含类型转换判空"><a class="markdownIt-Anchor" href="#隐含类型转换判空"></a> 隐含类型转换判空</h1>
-<pre><code>a, b, c, d = [1, 2, 3], {}, '', []
-if a:
-	print(&quot;a not empty&quot;)
-if b:
-	print(&quot;b not empty&quot;)
-if c:
-	print(&quot;c not empty&quot;)
-if d:
-	print(&quot;d not empty&quot;)
-</code></pre>
-<h1 id="判断多个条件是否成立anyall"><a class="markdownIt-Anchor" href="#判断多个条件是否成立anyall"></a> 判断多个条件是否成立:any，all</h1>
-<pre><code>a, b, c = 1, 2, 3
-if any([a &gt; 1, b &lt; 2, c == 3]): pass  # === a&gt;1 or b&lt;2 or c==3
-if all([a &gt; 1, b &lt; 2, c == 3]): pass  # === a&gt;1 and b&lt;2 and c==3
-</code></pre>
-<h1 id="列表推导式过滤"><a class="markdownIt-Anchor" href="#列表推导式过滤"></a> 列表推导式+过滤</h1>
-<pre><code>ls = [1, 2, 3, &quot;a&quot;, 4, &quot;v&quot;, 5.5]
-rs = [i for i in ls if type(i) in [int, float]]
-print(rs)
-</code></pre>
-<h1 id="同时获取下标和数据enumerate"><a class="markdownIt-Anchor" href="#同时获取下标和数据enumerate"></a> 同时获取下标和数据：enumerate</h1>
-<pre><code>nums = [1, 2, 3, 4]
-for index, num in enumerate(nums):
-  print(&quot;索引为{}的数据是{}&quot;.format(index, num))
-</code></pre>
-<h1 id="线程sleep"><a class="markdownIt-Anchor" href="#线程sleep"></a> 线程sleep</h1>
-<pre><code>import time
-
-time.sleep(1)  # 休眠1秒
-</code></pre>
-<h1 id="print-输出覆盖"><a class="markdownIt-Anchor" href="#print-输出覆盖"></a> print 输出覆盖</h1>
-<pre><code>i, n = 0, 100
-for i in range(n):
-	time.sleep(0.1)
-	if (i + 1) % 10 == 0: print(i + 1, end = '\r')
-</code></pre>
-<h1 id="lambda匿名函数"><a class="markdownIt-Anchor" href="#lambda匿名函数"></a> lambda匿名函数</h1>
-<pre><code>names = ['a', 'b', 'xxx', 'vx', 'ccc']
-rs = filter(lambda x:len(x) &lt;= 1, names)
-print(list(rs))  # ['a', 'b']
-</code></pre>
-<h1 id="yield生成器收集系列值不需要return"><a class="markdownIt-Anchor" href="#yield生成器收集系列值不需要return"></a> yield生成器收集系列值，不需要return</h1>
-<pre><code>def fun():
-	a = 0
-	for i in range(10):
-		a += i
-		yield a
-# [0, 1, 3, 6, 10, 15, 21, 28, 36, 45]
-print(list(fun()))
-</code></pre>
-<h1 id="装饰器给函数添加插入日志性能测试等非核心功能"><a class="markdownIt-Anchor" href="#装饰器给函数添加插入日志性能测试等非核心功能"></a> 装饰器给函数添加插入日志，性能测试等非核心功能</h1>
-<pre><code>def runtime(func):
-	def wrapper(*args, **kwargs):
-		start = time.time()
-		result = func(*args, **kwargs)
-		end = time.time()
-		print(&quot;{} is called,used {}s.&quot;.format(func.__name__, start - end))
-		return result
-	return (wrapper)
-
-@runtime
-def process():
-	s = 0
-	for i in range(100):
-		time.sleep(1)
-		s += i
-
-process()
-</code></pre>
-<h1 id="3-copy"><a class="markdownIt-Anchor" href="#3-copy"></a> 3、<mark><mark><mark><mark><mark>copy</mark></mark></mark></mark></mark></h1>
-<p>使用：copy包中的copy()函数和deepcopy()函数</p>
-<h3 id="31赋值指向同一块地址"><a class="markdownIt-Anchor" href="#31赋值指向同一块地址"></a> 3.1：赋值：指向同一块地址</h3>
-<pre><code>a = {1: [1, 2, 3]}
-print('a的内存地址 %s' % id(a))      # 4386109840
-print('a1的内存地址 %s' % id(a[1]))  # 4391711560
-b = a
-</code></pre>
-<h3 id="32浅拷贝指向不同的引用但是不同引用指向相同内容只拷贝对象但不拷贝对象内部的对象"><a class="markdownIt-Anchor" href="#32浅拷贝指向不同的引用但是不同引用指向相同内容只拷贝对象但不拷贝对象内部的对象"></a> 3.2：浅拷贝：指向不同的引用，但是不同引用指向相同内容(只拷贝对象，但不拷贝对象内部的对象)</h3>
-<pre><code>b = copy.copy(a)
-print('a的内存地址 %s' % id(a))      # 4386109840
-print('b的内存地址 %s' % id(b))      # 4386110200
-print('a1的内存地址 %s' % id(a[1]))  # 4391711560
-print('b1的内存地址 %s' % id(b[1]))  # 4391711560
-</code></pre>
-<h3 id="33深拷贝对象及对象内部的对象都复制一份"><a class="markdownIt-Anchor" href="#33深拷贝对象及对象内部的对象都复制一份"></a> 3.3：深拷贝：对象及对象内部的对象都复制一份</h3>
-<pre><code>b = copy.deepcopy(a)
-print('a的内存地址 %s' % id(a))      # 4386109840
-print('b的内存地址 %s' % id(b))      # 4391729264
-print('a1的内存地址 %s' % id(a[1]))  # 4391711560
-print('b1的内存地址 %s' % id(b[1]))  # 4391711368
-</code></pre>
+        <h1 id="多变量赋值"><a href="#多变量赋值" class="headerlink" title="多变量赋值"></a>多变量赋值</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b, c, d = <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h1 id="列表赋值"><a href="#列表赋值" class="headerlink" title="列表赋值"></a>列表赋值</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names = [<span class="string">"ami"</span>, <span class="string">"kimi"</span>, <span class="string">"jsm"</span>]</span><br><span class="line">a, b, c = names</span><br></pre></td></tr></table></figure>
+<h1 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">8</span></span><br><span class="line">d = x <span class="keyword">if</span> x &gt; <span class="number">5</span> <span class="keyword">else</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>) <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h1 id="条件判断-不是用and"><a href="#条件判断-不是用and" class="headerlink" title="条件判断:不是用and"></a>条件判断:不是用and</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">90</span></span><br><span class="line"><span class="keyword">if</span> <span class="number">80</span> &lt; x &lt; <span class="number">100</span>: print(x)</span><br></pre></td></tr></table></figure>
+<h1 id="判断是否在-不在某列表-字符串"><a href="#判断是否在-不在某列表-字符串" class="headerlink" title="判断是否在/不在某列表,字符串"></a>判断是否在/不在某列表,字符串</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="number">1</span> <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]: print(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="number">1</span> <span class="keyword">not</span> <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]: print(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">'1'</span> <span class="keyword">in</span> <span class="string">"123"</span>: print(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="string">'1'</span> <span class="keyword">not</span> <span class="keyword">in</span> <span class="string">"123"</span>: print(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="隐含类型转换判空"><a href="#隐含类型转换判空" class="headerlink" title="隐含类型转换判空"></a>隐含类型转换判空</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a, b, c, d = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], &#123;&#125;, <span class="string">''</span>, []</span><br><span class="line"><span class="keyword">if</span> a:</span><br><span class="line">	print(<span class="string">"a not empty"</span>)</span><br><span class="line"><span class="keyword">if</span> b:</span><br><span class="line">	print(<span class="string">"b not empty"</span>)</span><br><span class="line"><span class="keyword">if</span> c:</span><br><span class="line">	print(<span class="string">"c not empty"</span>)</span><br><span class="line"><span class="keyword">if</span> d:</span><br><span class="line">	print(<span class="string">"d not empty"</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="判断多个条件是否成立-any，all"><a href="#判断多个条件是否成立-any，all" class="headerlink" title="判断多个条件是否成立:any，all"></a>判断多个条件是否成立:any，all</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></span><br><span class="line"><span class="keyword">if</span> any([a &gt; <span class="number">1</span>, b &lt; <span class="number">2</span>, c == <span class="number">3</span>]): <span class="keyword">pass</span>  <span class="comment"># === a&gt;1 or b&lt;2 or c==3</span></span><br><span class="line"><span class="keyword">if</span> all([a &gt; <span class="number">1</span>, b &lt; <span class="number">2</span>, c == <span class="number">3</span>]): <span class="keyword">pass</span>  <span class="comment"># === a&gt;1 and b&lt;2 and c==3</span></span><br></pre></td></tr></table></figure>
+<h1 id="列表推导式-过滤"><a href="#列表推导式-过滤" class="headerlink" title="列表推导式+过滤"></a>列表推导式+过滤</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">"a"</span>, <span class="number">4</span>, <span class="string">"v"</span>, <span class="number">5.5</span>]</span><br><span class="line">rs = [i <span class="keyword">for</span> i <span class="keyword">in</span> ls <span class="keyword">if</span> type(i) <span class="keyword">in</span> [int, float]]</span><br><span class="line">print(rs)</span><br></pre></td></tr></table></figure>
+<h1 id="同时获取下标和数据：enumerate"><a href="#同时获取下标和数据：enumerate" class="headerlink" title="同时获取下标和数据：enumerate"></a>同时获取下标和数据：enumerate</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">for</span> index, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">  print(<span class="string">"索引为&#123;&#125;的数据是&#123;&#125;"</span>.format(index, num))</span><br></pre></td></tr></table></figure>
+<h1 id="线程sleep"><a href="#线程sleep" class="headerlink" title="线程sleep"></a>线程sleep</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">1</span>)  <span class="comment"># 休眠1秒</span></span><br></pre></td></tr></table></figure>
+<h1 id="print-输出覆盖"><a href="#print-输出覆盖" class="headerlink" title="print 输出覆盖"></a>print 输出覆盖</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">i, n = <span class="number">0</span>, <span class="number">100</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">	time.sleep(<span class="number">0.1</span>)</span><br><span class="line">	<span class="keyword">if</span> (i + <span class="number">1</span>) % <span class="number">10</span> == <span class="number">0</span>: print(i + <span class="number">1</span>, end = <span class="string">'\r'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="lambda匿名函数"><a href="#lambda匿名函数" class="headerlink" title="lambda匿名函数"></a>lambda匿名函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'xxx'</span>, <span class="string">'vx'</span>, <span class="string">'ccc'</span>]</span><br><span class="line">rs = filter(<span class="keyword">lambda</span> x:len(x) &lt;= <span class="number">1</span>, names)</span><br><span class="line">print(list(rs))  <span class="comment"># ['a', 'b']</span></span><br></pre></td></tr></table></figure>
+<h1 id="yield生成器收集系列值，不需要return"><a href="#yield生成器收集系列值，不需要return" class="headerlink" title="yield生成器收集系列值，不需要return"></a>yield生成器收集系列值，不需要return</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">()</span>:</span></span><br><span class="line">	a = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">		a += i</span><br><span class="line">		<span class="keyword">yield</span> a</span><br><span class="line"><span class="comment"># [0, 1, 3, 6, 10, 15, 21, 28, 36, 45]</span></span><br><span class="line">print(list(fun()))</span><br></pre></td></tr></table></figure>
+<h1 id="装饰器给函数添加插入日志，性能测试等非核心功能"><a href="#装饰器给函数添加插入日志，性能测试等非核心功能" class="headerlink" title="装饰器给函数添加插入日志，性能测试等非核心功能"></a>装饰器给函数添加插入日志，性能测试等非核心功能</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">runtime</span><span class="params">(func)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">		start = time.time()</span><br><span class="line">		result = func(*args, **kwargs)</span><br><span class="line">		end = time.time()</span><br><span class="line">		print(<span class="string">"&#123;&#125; is called,used &#123;&#125;s."</span>.format(func.__name__, start - end))</span><br><span class="line">		<span class="keyword">return</span> result</span><br><span class="line">	<span class="keyword">return</span> (wrapper)</span><br><span class="line"></span><br><span class="line"><span class="meta">@runtime</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">()</span>:</span></span><br><span class="line">	s = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">		time.sleep(<span class="number">1</span>)</span><br><span class="line">		s += i</span><br><span class="line"></span><br><span class="line">process()</span><br></pre></td></tr></table></figure>
+<h1 id="3、-copy"><a href="#3、-copy" class="headerlink" title="3、==========copy=========="></a>3、==========copy==========</h1><p>使用：<code>copy</code>包中的<code>copy()函数</code>和<code>deepcopy()</code>函数</p>
+<h3 id="3-1：赋值：指向同一块地址"><a href="#3-1：赋值：指向同一块地址" class="headerlink" title="3.1：赋值：指向同一块地址"></a>3.1：赋值：指向同一块地址</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;</span><br><span class="line">print(<span class="string">'a的内存地址 %s'</span> % id(a))      <span class="comment"># 4386109840</span></span><br><span class="line">print(<span class="string">'a1的内存地址 %s'</span> % id(a[<span class="number">1</span>]))  <span class="comment"># 4391711560</span></span><br><span class="line">b = a</span><br></pre></td></tr></table></figure>
+<h3 id="3-2：浅拷贝：指向不同的引用，但是不同引用指向相同内容-只拷贝对象，但不拷贝对象内部的对象"><a href="#3-2：浅拷贝：指向不同的引用，但是不同引用指向相同内容-只拷贝对象，但不拷贝对象内部的对象" class="headerlink" title="3.2：浅拷贝：指向不同的引用，但是不同引用指向相同内容(只拷贝对象，但不拷贝对象内部的对象)"></a>3.2：浅拷贝：指向不同的引用，但是不同引用指向相同内容(只拷贝对象，但不拷贝对象内部的对象)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">b = copy.copy(a)</span><br><span class="line">print(<span class="string">'a的内存地址 %s'</span> % id(a))      <span class="comment"># 4386109840</span></span><br><span class="line">print(<span class="string">'b的内存地址 %s'</span> % id(b))      <span class="comment"># 4386110200</span></span><br><span class="line">print(<span class="string">'a1的内存地址 %s'</span> % id(a[<span class="number">1</span>]))  <span class="comment"># 4391711560</span></span><br><span class="line">print(<span class="string">'b1的内存地址 %s'</span> % id(b[<span class="number">1</span>]))  <span class="comment"># 4391711560</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-3：深拷贝：对象及对象内部的对象都复制一份"><a href="#3-3：深拷贝：对象及对象内部的对象都复制一份" class="headerlink" title="3.3：深拷贝：对象及对象内部的对象都复制一份"></a>3.3：深拷贝：对象及对象内部的对象都复制一份</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">b = copy.deepcopy(a)</span><br><span class="line">print(<span class="string">'a的内存地址 %s'</span> % id(a))      <span class="comment"># 4386109840</span></span><br><span class="line">print(<span class="string">'b的内存地址 %s'</span> % id(b))      <span class="comment"># 4391729264</span></span><br><span class="line">print(<span class="string">'a1的内存地址 %s'</span> % id(a[<span class="number">1</span>]))  <span class="comment"># 4391711560</span></span><br><span class="line">print(<span class="string">'b1的内存地址 %s'</span> % id(b[<span class="number">1</span>]))  <span class="comment"># 4391711368</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
