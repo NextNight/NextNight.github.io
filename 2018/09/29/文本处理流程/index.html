@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>文本处理流程 | Kala</title>
+  <meta name="description" content="文本处理的流程文本–&amp;gt;分词–&amp;gt;向量化–&amp;gt;建模 1、分词方法 分词是NLP的基础，无论是文档还是语句都是有基本的词构成，因此分词的好坏直接影响到文本的表示。   基本匹配分词  1234567此方法按照不同的扫描方式，逐个查找词库进行分词。根据扫描方式可细分为：    正向最大匹配    反向最大匹配    双向最大匹配    最小切分(即最短路径)总之就是各种不同的启发规则">
+<meta name="keywords" content="分词,向量化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文本处理流程">
+<meta property="og:url" content="http://nextnight.github.io/2018/09/29/文本处理流程/index.html">
+<meta property="og:site_name" content="Kala">
+<meta property="og:description" content="文本处理的流程文本–&amp;gt;分词–&amp;gt;向量化–&amp;gt;建模 1、分词方法 分词是NLP的基础，无论是文档还是语句都是有基本的词构成，因此分词的好坏直接影响到文本的表示。   基本匹配分词  1234567此方法按照不同的扫描方式，逐个查找词库进行分词。根据扫描方式可细分为：    正向最大匹配    反向最大匹配    双向最大匹配    最小切分(即最短路径)总之就是各种不同的启发规则">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-29T05:58:26.819Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文本处理流程">
+<meta name="twitter:description" content="文本处理的流程文本–&amp;gt;分词–&amp;gt;向量化–&amp;gt;建模 1、分词方法 分词是NLP的基础，无论是文档还是语句都是有基本的词构成，因此分词的好坏直接影响到文本的表示。   基本匹配分词  1234567此方法按照不同的扫描方式，逐个查找词库进行分词。根据扫描方式可细分为：    正向最大匹配    反向最大匹配    双向最大匹配    最小切分(即最短路径)总之就是各种不同的启发规则">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://nextnight.github.io/2018/09/29/文本处理流程/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Kala" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+        <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+    
+    
+
+  <!--定不加载条  -->
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+  <style>
+      .pace .pace-progress {
+          background: #1E92FB; /*进度条颜色*/
+          height: 2px;
+      }
+      .pace .pace-progress-inner {
+           box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+      }
+      .pace .pace-activity {
+          border-top-color: #1E92FB;    /*上边框颜色*/
+          border-left-color: #1E92FB;    /*左边框颜色*/
+      }
+  </style>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+  <!-- MathJax -->
+  <script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)'],['\\','\\']]}
+      });
+  </script>
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/NextNight" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Kala</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">DL &amp; ML</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, china</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about active">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p style="text-align:left;font-family:cursive；color:#c75079e6">物来顺应<br/>未来不迎<br/>当时不杂<br/>既过不恋!<br/></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ML/">ML</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ML/NLP/">NLP</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Numpy/">Numpy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pandas/">Pandas</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/">Numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/">Pandas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matplotlib/">matplotlib</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分词/">分词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/向量化/">向量化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Jupyter/" style="font-size: 13px;">Jupyter</a> <a href="/tags/Numpy/" style="font-size: 13px;">Numpy</a> <a href="/tags/Pandas/" style="font-size: 13px;">Pandas</a> <a href="/tags/Python/" style="font-size: 14px;">Python</a> <a href="/tags/array/" style="font-size: 13px;">array</a> <a href="/tags/matplotlib/" style="font-size: 13px;">matplotlib</a> <a href="/tags/分词/" style="font-size: 13px;">分词</a> <a href="/tags/向量化/" style="font-size: 13px;">向量化</a> <a href="/tags/数据结构/" style="font-size: 13px;">数据结构</a> <a href="/tags/算法/" style="font-size: 13px;">算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/ML/">ML</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/ML/NLP/">NLP</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/29/文本处理流程/" class="title">文本处理流程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-29T05:49:41.000Z" itemprop="datePublished">2018-09-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python/">Python</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/13/mac-jupyter中文显示设置/" class="title">mac jupyter中文显示设置</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-13T15:08:34.000Z" itemprop="datePublished">2018-09-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python/">Python</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/Python/Pandas/">Pandas</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/13/Pandas基本操作/" class="title">Pandas基本操作</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-13T14:58:52.000Z" itemprop="datePublished">2018-09-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python/">Python</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/Python/Numpy/">Numpy</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/10/Numpy基本操作/" class="title">Numpy基本操作</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-10T14:45:39.000Z" itemprop="datePublished">2018-09-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python/">Python</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/10/Python代码片段/" class="title">Python代码片段</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-10T14:03:51.000Z" itemprop="datePublished">2018-09-10</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文本处理的流程"><span class="toc-number">1.</span> <span class="toc-text">文本处理的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、分词方法"><span class="toc-number">2.</span> <span class="toc-text">1、分词方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、语言模型："><span class="toc-number">3.</span> <span class="toc-text">2、语言模型：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#向量化"><span class="toc-number">3.0.1.</span> <span class="toc-text">向量化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Word2Vec"><span class="toc-number">3.0.2.</span> <span class="toc-text">Word2Vec</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-文本处理流程" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      文本处理流程
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/09/29/文本处理流程/" class="article-date">
+	  <time datetime="2018-09-29T05:49:41.000Z" itemprop="datePublished">2018-09-29</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/ML/">ML</a>►<a class="article-category-link" href="/categories/ML/NLP/">NLP</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/分词/">分词</a>, <a class="article-tag-link" href="/tags/向量化/">向量化</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/29/文本处理流程/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <h2 id="文本处理的流程"><a href="#文本处理的流程" class="headerlink" title="文本处理的流程"></a>文本处理的流程</h2><p><code>文本</code>–&gt;<code>分词</code>–&gt;<code>向量化</code>–&gt;<code>建模</code></p>
+<h2 id="1、分词方法"><a href="#1、分词方法" class="headerlink" title="1、分词方法"></a>1、分词方法</h2><blockquote>
+<p>分词是NLP的基础，无论是文档还是语句都是有基本的词构成，因此分词的好坏直接影响到文本的表示。</p>
+</blockquote>
+<ol>
+<li>基本匹配分词</li>
+</ol>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">此方法按照不同的扫描方式，逐个查找词库进行分词。</span><br><span class="line">根据扫描方式可细分为：</span><br><span class="line">    正向最大匹配</span><br><span class="line">    反向最大匹配</span><br><span class="line">    双向最大匹配</span><br><span class="line">    最小切分<span class="comment">(即最短路径)</span></span><br><span class="line">总之就是各种不同的启发规则</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>全局切分+语言模型分词</li>
+</ol>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 基本操作：</span></span><br><span class="line"><span class="ruby">  <span class="number">1</span>、它首先切分出与词库匹配的所有可能的词，</span></span><br><span class="line"><span class="ruby">  <span class="number">2</span>、再运用统计语言模型决定最优的切分结果。【一般采用viterbi算法寻找找最优的组合】</span></span><br><span class="line"><span class="ruby">- 优点：</span></span><br><span class="line"><span class="ruby">  <span class="number">1</span>、在于可以解决分词中的歧义问题。</span></span><br><span class="line"><span class="ruby">- 示例：</span></span><br><span class="line"><span class="ruby">  对于文本串“南京市长江大桥”，首先进行词条检索(一般用Trie存储)，找到匹配的所有词条（南京，市，长江，大桥，南京市，长江大桥，市长，江大桥，江大，桥），以词网格(word lattices)形式表示，接着做路径搜索，基于统计语言模型(例如n-gram)找到最优路径，最后可能还需要命名实体识别。</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>以字构词</li>
+</ol>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- 基本操作：</span><br><span class="line">  <span class="number">1</span>、将分词问题转化为了单个字的分类问题(序列标签)，为每一个字打上<span class="string">'B'</span>,<span class="string">'I'</span>,<span class="string">'E'</span>,<span class="string">'S'</span>五个标签中的一个。其中<span class="string">'B'</span>:一个词的开头，<span class="string">'I'</span>:一个词的中间，<span class="string">'E'</span>:一个词的结尾，<span class="string">'S'</span>:单个字成词。</span><br><span class="line">  <span class="number">2</span>、通过统计信息得到每个字的标签的概率，然后采用<span class="string">'Viterbi算法'</span>得到最优的结果。</span><br><span class="line">- 优点：</span><br><span class="line">  <span class="number">1</span>、具有新词发现功能，准确率较高。</span><br><span class="line">- 实现：</span><br><span class="line">  <span class="number">1</span>、<span class="string">'HMM分词'</span>,</span><br><span class="line">  <span class="number">2</span>、<span class="string">'CRF分词'</span>,</span><br><span class="line">  <span class="number">3</span>、<span class="string">'深度学习分词'</span></span><br><span class="line"></span><br><span class="line">- [<span class="number">1</span>] 深度学习分词的流程：</span><br><span class="line">    <span class="number">-1</span>、将每一个字<span class="symbol">Lookup</span> <span class="symbol">Table</span>映射到一个固定长度的特征向量.</span><br><span class="line">    <span class="number">-2</span>、经过一个标准的神经网络：liner-sigmod-liner三层<span class="string">'同样得到每个字属于B,I,E,S四个Tag的概率'</span>.</span><br><span class="line">    <span class="number">-3</span>、采用<span class="string">'Viterbi算法'</span>求得最优结果.</span><br><span class="line"></span><br><span class="line">- [<span class="number">2</span>] <span class="symbol">HMM</span>分词 <span class="symbol">VS</span> <span class="symbol">CRF</span>分词</span><br><span class="line">    <span class="symbol">CRF</span>：目前效果已经优于<span class="symbol">HMM</span>，无论是新词发现还是实体识别，人名识别。</span><br><span class="line">    优点:</span><br><span class="line">        <span class="number">1</span>、在于<span class="symbol">CRF</span>既可以像最大熵模型一样加各种领域feature。</span><br><span class="line">        <span class="number">2</span>、又避免了<span class="symbol">HMM</span>的齐次马尔科夫假设。</span><br></pre></td></tr></table></figure>
+<h2 id="2、语言模型："><a href="#2、语言模型：" class="headerlink" title="2、语言模型："></a>2、语言模型：</h2><blockquote>
+<p>语言模型是用来计算一句话生成概率的模型，</p>
+</blockquote>
+<p>1、语言模型的演变</p>
+<p>[1.1] bayes:</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 定义：每个词出现的概率取决于前面所有的词</span></span><br><span class="line"><span class="ruby">- 公式：P(w_m) = p(w_m<span class="params">|w_&#123;m-1&#125;,w_&#123;m-2&#125;..w_1)</span></span></span><br><span class="line"><span class="ruby">- P(S)：P(S) = P(w_1)*p(w_2)...p(w_n),n为词或字个数,P(S)表示句子概率</span></span><br><span class="line"><span class="ruby">- 缺点：计算过于复杂，甚至难以计算</span></span><br><span class="line"><span class="ruby">- 简化：朴素贝叶斯，条件独立性假设</span></span><br></pre></td></tr></table></figure>
+<p>[1.2] n-gram：n元词型<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 定义：衍生自HMM，它利用马尔科夫假设，认为句子中每个单词只与其前n–<span class="number">1</span>个单词有关，即假设产生w_m这个词的条件概率只依赖于前n–<span class="number">1</span>个词。其中n越大，模型可区别性越强，n越小，模型可靠性越高。</span></span><br><span class="line"><span class="ruby">- 公式：p(w_m) = p(w_m<span class="params">|w_&#123;m-n+1&#125;...,w_&#123;m-1&#125;))</span></span></span><br><span class="line"><span class="ruby">- P(S)：P(S) = P(w_1)*p(w_2)...p(w_n),n为词或字个数,P(S)表示句子概率</span></span><br><span class="line"><span class="ruby">- 优点：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、简单有效，多元词型组合可以得到更丰富的信息</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、考虑了词的位置关系</span></span><br><span class="line"><span class="ruby">- 不足：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、没有考虑到词语的相似性</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、没有考虑词法，语法，以及语义信息</span></span><br><span class="line"><span class="ruby">    <span class="number">3</span>、仍然存在数据稀疏的问题</span></span><br></pre></td></tr></table></figure></p>
+<p>[1.3] ffnnlm：前馈神经网络语言模型<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 定义：基于n-gram的语言模型，他将词<span class="string">"w_m"</span>的前n-<span class="number">1</span>个词p(w<span class="number">_</span>&#123;m-n+<span class="number">1</span>&#125;...p(w<span class="number">_</span>&#123;m-<span class="number">1</span>&#125;))映射到词向量空间，然后把它们拼接起来得到一个更大的词向量作为神经网络的输入，<span class="string">'输出'</span>的是p(w_m)</span></span><br><span class="line"><span class="ruby">- 优点：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、词语之间的相似性可以通过词向量来体现</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、自带平滑功能</span></span><br></pre></td></tr></table></figure></p>
+<p>[1.4] rnnlm:循环神经网络语言模型<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> rnnlm特点：可以存在有向环，将上一次的输出作为本次的输入。</span></span><br><span class="line"><span class="ruby">- rnnlm和ffnnlm的最大区别是：ffnnmm要求输入的上下文是固定长度的，也就是说n-gram中的 n要求是个固定值，而rnnlm不限制上下文的长度，可以真正充分地利用所有上文信息来预测下一个词，本次预测的中间隐层信息(例如下图中的context信息)可以在下一次预测里循环使用。</span></span><br><span class="line"><span class="ruby">- 基本结构：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、输入层：</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、隐藏层：</span></span><br><span class="line"><span class="ruby">    <span class="number">3</span>、输出层：</span></span><br><span class="line"><span class="ruby">- 预测步骤：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、单词w<span class="number">_</span>&#123;m-<span class="number">1</span>&#125;映射到词向量，记作input(t)</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、连接上一次训练的隐藏层context(t–<span class="number">1</span>)，经过sigmoid function，生成当前t时刻的context(t)</span></span><br><span class="line"><span class="ruby">    <span class="number">3</span>、利用softmax function，预测P(w_m)</span></span><br><span class="line"><span class="ruby">- 缺点：基于RNN的语言模型利用BPTT(BackPropagation through time)算法比较难于训练，原因就是深度神经网络里比较普遍的梯度消失问题。</span></span><br><span class="line"><span class="ruby">- 优点：训练精度高</span></span><br></pre></td></tr></table></figure></p>
+<p>[1.5] lstmlm:长短记忆神经网络<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> lstmlm特点：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、也是一种RNN网络，通过结构的修改避免了梯度消失。</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、能够记忆更多的信息。</span></span><br></pre></td></tr></table></figure></p>
+<p>2、N-gram的基本原理</p>
+<blockquote>
+<p>N-gram即N元语法模型，采用马尔科夫假设，认为一个词生成的概率取决于他前面的N-1个词。</p>
+</blockquote>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- 约定：</span><br><span class="line">    s:代表句子</span><br><span class="line">    w_i:第i个词</span><br><span class="line">    w_n:代表第n个词</span><br><span class="line">    N:词数</span><br><span class="line">- 句子s生成的概率如下：</span><br><span class="line">    P<span class="params">(s)</span> = p<span class="params">(w_1)</span>p<span class="params">(w_2)</span>p<span class="params">(w_3)</span>...p(w_n)</span><br><span class="line">- "为了避免数据溢出、提高性能，通常会使用取 log 后使用加法运算替代乘法运算"即：</span><br><span class="line">- log<span class="params">(p(s))</span> = log<span class="params">(p(w_1))</span>+log<span class="params">(p(w_2))</span>+log<span class="params">(p(w_3))</span>...log(p(w_n))</span><br></pre></td></tr></table></figure>
+<p>[2.1]、<code>bigram</code>:假设一个词生成的概率、取决于他前面1个词</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- 句子s生成的概率如下：</span><br><span class="line">    P<span class="comment">(s)</span> = p<span class="comment">(w_1)</span>p<span class="comment">(w_2)</span>p<span class="comment">(w_3)</span>...p<span class="comment">(w_n)</span></span><br><span class="line">- bigram下词w_m生成的概率：</span><br><span class="line">    p<span class="comment">(w_1)</span> = p<span class="comment">(w_1)</span></span><br><span class="line">    p<span class="comment">(w_2)</span> = p<span class="comment">(w_2|w_1)</span></span><br><span class="line">    p<span class="comment">(w_3)</span> = p<span class="comment">(w_3|w_2)</span></span><br><span class="line">    ...</span><br><span class="line">    p<span class="comment">(w_m)</span> = p<span class="comment">(w_m|w_m-1)</span></span><br><span class="line">- 得到句子生成的概率：</span><br><span class="line">    P<span class="comment">(s)</span> = p<span class="comment">(w_1)</span>p<span class="comment">(w_2|w_1)</span>p<span class="comment">(w_3|w_2)</span>..p<span class="comment">(w_m|w_m-1)</span>..p<span class="comment">(w_n|w_n-1)</span>-</span><br></pre></td></tr></table></figure>
+<p>[2.2]、<code>trigram</code>:假设一个词的生成概率取决于他前面的2个词</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- 句子s生成的概率如下：</span><br><span class="line">    P<span class="comment">(s)</span> = p<span class="comment">(w_1)</span>p<span class="comment">(w_2)</span>p<span class="comment">(w_3)</span>...p<span class="comment">(w_n)</span></span><br><span class="line">- trigram下词w_m生成的概率：</span><br><span class="line">    p<span class="comment">(w_1)</span> = p<span class="comment">(w_1)</span></span><br><span class="line">    p<span class="comment">(w_2)</span> = p<span class="comment">(w_2|w_1)</span></span><br><span class="line">    p<span class="comment">(w_3)</span> = p<span class="comment">(w_3|w_&#123;1,2&#125;)</span></span><br><span class="line">    ...</span><br><span class="line">    p<span class="comment">(w_m)</span> = p<span class="comment">(w_m|w_&#123;m-2,m-1&#125;)</span></span><br><span class="line">- 得到句子生成的概率：</span><br><span class="line">    P<span class="comment">(s)</span> = p<span class="comment">(w_1)</span>p<span class="comment">(w_2|w_1)</span>p<span class="comment">(w_3|w_1,w_2)</span>..p<span class="comment">(w_m|w_m-2,w_m-1)</span>..p<span class="comment">(w_n|w_n-1,w_n-2)</span>-</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如上知道了如何去计算一个句子生成的概率，那么该如何去算其中的每一项呢？其实不过还是频率来表示概率。</p>
+<p><code>bigram</code>中<code>P(w_m) = p(w_m|w_m-1)=count(w_m,w_m-1)/count(w_m-1)</code>即计算当前词的概率用当前词和前一个词共同出现的次数比上前一个词出现的次数。</p>
+</blockquote>
+<p>[2.3] bigram示例：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 语料：</span><br><span class="line">    <span class="built_in">s1</span>：我喜欢西红柿炒鸡蛋</span><br><span class="line">    <span class="built_in">s2</span>：西红柿是我最爱</span><br><span class="line"><span class="symbol">    s3:</span> 我喜欢什么</span><br></pre></td></tr></table></figure>
+<p>单词词频：</p>
+<table>
+<thead>
+<tr>
+<th>word</th>
+<th>我</th>
+<th>喜欢</th>
+<th>西红柿</th>
+<th>炒</th>
+<th>鸡蛋</th>
+<th>是</th>
+<th>最爱</th>
+<th>什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>p(word)</td>
+<td>0.2</td>
+<td>0.2</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 句子s1出现的概率：</span><br><span class="line">    p<span class="params">(s1)</span> = p<span class="params">(我)</span>p<span class="params">(喜欢)</span>p<span class="params">(西红柿)</span>p<span class="params">(炒)</span>p<span class="params">(鸡蛋)</span></span><br><span class="line">        = p<span class="params">(我)</span>p<span class="params">(喜欢|我)</span>p<span class="params">(西红柿|喜欢)</span>p<span class="params">(炒|西红柿)</span>p<span class="params">(鸡蛋|炒)</span></span><br><span class="line">- 根据顺序共现得到bigram的共现词频如下：</span><br></pre></td></tr></table></figure>
+<p>顺序共现词频：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">word</th>
+<th>我</th>
+<th>喜欢</th>
+<th>西红柿</th>
+<th>炒</th>
+<th>鸡蛋</th>
+<th>是</th>
+<th>最爱</th>
+<th>什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">我</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">喜欢</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td style="text-align:center">西红柿</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">炒</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">鸡蛋</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">是</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">最爱</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">什么</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- 最后得到句子s1的概率如下：</span><br><span class="line">  p<span class="params">(s1)</span> = p<span class="params">(我)</span>p<span class="params">(喜欢)</span>p<span class="params">(西红柿)</span>p<span class="params">(炒)</span>p<span class="params">(鸡蛋)</span></span><br><span class="line">        = p<span class="params">(我)</span>p<span class="params">(喜欢|我)</span>p<span class="params">(西红柿|喜欢)</span>p<span class="params">(炒|西红柿)</span>p<span class="params">(鸡蛋|炒)</span></span><br><span class="line">        = 0.<span class="number">2</span> * (count(我喜欢)/count(我))</span><br><span class="line">              * (count(喜欢西红柿)/count(喜欢))</span><br><span class="line">              * (count(西红柿炒)/count(西红柿))</span><br><span class="line">              * (count(炒鸡蛋)/count(炒))</span><br></pre></td></tr></table></figure>
+<p>同理可得trigram，n-gram的计算方式，分别去统计N元词出现的次数。得到条件概率。</p>
+<p>[2.4]、数据平滑</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- 数据平滑：大规模数据统计方法与有限的训练语料之间必然产生数据稀疏问题，导致零概率问题。为了解决数据稀疏问题，人们为理论模型实用化而进行了众多尝试与努力，诞生了一系列经典的平滑技术。</span><br><span class="line">- 基本思想：“降低已出现 n-gram 的条件概率分布，以使未出现的 n-gram 条件概率分布非零”，且经数据平滑后一定保证概率和为<span class="number">1</span>，</span><br><span class="line">- 平滑技术：</span><br><span class="line">      <span class="number">1</span>、加一平滑：又称拉普拉斯平滑</span><br><span class="line">      Pmle(w_m|w_m<span class="number">-1</span>) = count(w_m,w_m<span class="number">-1</span>)/count(w_m<span class="number">-1</span>)</span><br><span class="line">      Padd1(w_m|w_m<span class="number">-1</span>) = count(w_m,w_m<span class="number">-1</span>)+<span class="number">1</span>/count(w_m<span class="number">-1</span>)+VV代表<span class="number">2</span>元词型的个数。V个二元词型保证概率和为<span class="number">1</span>。</span><br></pre></td></tr></table></figure>
+<h4 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">文本的向量化主要有以下几种：</span><br><span class="line">    <span class="selector-attr">[1]</span> <span class="selector-tag">countvec</span>：词袋模型，词频表示</span><br><span class="line">    <span class="selector-attr">[2]</span> <span class="selector-tag">Tf-idf</span>：基于<span class="selector-tag">bow</span>的权重表示</span><br><span class="line">    <span class="selector-attr">[3]</span> 主题模型<span class="selector-pseudo">:PLSA</span>，<span class="selector-tag">LDA</span></span><br><span class="line">    <span class="selector-attr">[4]</span> 词嵌入：<span class="selector-tag">word2vec</span>,<span class="selector-tag">glove</span>,<span class="selector-tag">fastext</span></span><br><span class="line">约定：</span><br><span class="line">    1、词袋：数据集中所有的的词构成的词集或词典。</span><br><span class="line">    2、词频：一篇文档中某个词出现的次数</span><br></pre></td></tr></table></figure>
+<p>1、词频向量：countvec</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">   定义：把每一篇文档表示为一个长度为词袋大小的向量，向量的每一个维度表示为词袋中的每一个词在此文档中出现的次数。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-   优缺点：</span></span><br><span class="line"><span class="ruby">     <span class="number">1</span>、能够一定程度反映词频信息，但是对于多篇文档中都出现的高频词没有银锭的区分度，</span></span><br><span class="line"><span class="ruby">     <span class="number">2</span>、词袋模型向量大多是高维稀疏矩阵。</span></span><br></pre></td></tr></table></figure>
+<p>2、权重向量：tf-idf</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 定义：词频(TF)x逆文档词频(IDF)用于表示一个词的权重。</span></span><br><span class="line"><span class="ruby">- 优点：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、降低多个文档都出现的高频词汇对重要度的影响。</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、提升低频词汇的重要度。</span></span><br><span class="line"><span class="ruby">    <span class="number">3</span>、tf-idf+<span class="string">'N-gram'</span>特征一定程度能够反映语序特征</span></span><br><span class="line"><span class="ruby">- 缺点：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、权重向量也是高维稀疏矩阵.</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、不能完全反映语序信息</span></span><br><span class="line"><span class="ruby">    <span class="number">3</span>、不能体现词语间的相似度信息。</span></span><br></pre></td></tr></table></figure>
+<p>3、主题向量：plsa,lda</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 定义：通过引入隐变量<span class="string">'主题'</span>将词频向量或者权重向量映射到一个固定维度的稠密向量。</span></span><br><span class="line"><span class="ruby">- 优点：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、降维作用，降低了模型的复杂度和计算量。</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、包含了一定的语义信息。</span></span><br><span class="line"><span class="ruby">- 缺点：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、主题数难以确定。</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、主题作为一种概率分布表示，难以表述其具体含义，可解释性较差。</span></span><br><span class="line"><span class="ruby">    <span class="number">3</span>、数据量大的时候主题训练耗时较长。</span></span><br></pre></td></tr></table></figure>
+<p>4、词嵌入向量:word2vec,glove,fasttext</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 定义：通过训练将每一个词映射到固定长度的词向量空间中，每个词就是一个点，同时引入距离的概念，就可以描述词语的相似度。</span></span><br><span class="line"><span class="ruby">- 优点：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、考虑到了词语的相似度信息。</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、维度固定且低维，便于后续计算。</span></span><br><span class="line"><span class="ruby">    <span class="number">3</span>、自带平滑功能</span></span><br><span class="line"><span class="ruby">- 缺点：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、好的词向量表示依赖于足够的训练预料，尤其是领域性较强的文本依赖于相关的领域文本，否则可能得不到足够好的词向量。</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、词向量的训练需要额外的步骤。且大语料的训练耗时。</span></span><br></pre></td></tr></table></figure>
+<h4 id="Word2Vec"><a href="#Word2Vec" class="headerlink" title="Word2Vec"></a>Word2Vec</h4><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 模型结构：</span></span><br><span class="line"><span class="ruby">    <span class="params">|--&gt;输入层</span></span></span><br><span class="line"><span class="ruby">        <span class="params">|--&gt;隐藏层</span></span></span><br><span class="line"><span class="ruby">            <span class="params">|--&gt;softmax</span></span></span><br><span class="line"><span class="ruby">- 两种实现方式：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、cbow</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、skip-gram</span></span><br><span class="line"><span class="ruby">- 两种优化方式：</span></span><br><span class="line"><span class="ruby">    <span class="number">1</span>、层次化softmax</span></span><br><span class="line"><span class="ruby">    <span class="number">2</span>、负采样</span></span><br></pre></td></tr></table></figure>
+<p>🐱目标函数：</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> <span class="symbol">w:</span>词w</span></span><br><span class="line"><span class="ruby">- <span class="symbol">C:</span>语料库</span></span><br><span class="line"><span class="ruby">- Context(w)<span class="symbol">:</span>词w的上下文信息</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>cbow:p(w|Context(w))：上下文词出现的情况下，词w出现的概率，即共现的概率。也是优化的目标，最大化这个概率。那么对与整个语料来说，目标函数就是最大化如下的概率积</p>
+<p>$$L = \prod_{w\epsilon C}p(w|Context(w))$$</p>
+</li>
+<li><p>skip-gram:以当前词预测上下文词的概率，即目标函数就是最大化当前词出现的时候上下文词出现的概率积。</p>
+<p>$$L = \prod_{w\epsilon C}p(Context(w)|w)$$</p>
+</li>
+<li><p>最大对数似然：</p>
+<p>$$L = \sum_{w\epsilon C}log(p(w|Cotext(w))))$$</p>
+<p>$$L = \sum_{w\epsilon C}log(p(Context(w)|w))$$</p>
+</li>
+</ul>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 训练过程：</span><br><span class="line">    1、输入层：随机初始化w的context<span class="params">(w)</span>的每一个词<span class="params">(前后各c个)</span>的词向量V<span class="params">(w)</span>。</span><br><span class="line">    2、投影层：将词w的context<span class="params">(w)</span>的所有V<span class="params">(w)</span>求和。</span><br><span class="line">    3、输出层：层次化softmax层，一颗二叉树，用计算得到的输出每个词的概率。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong align="center">If not me,who? If not now.when?</strong>
+      <!-- <a href="http://nextnight.github.io/2018/09/29/文本处理流程/" title="文本处理流程" target="_blank" rel="external">http://nextnight.github.io/2018/09/29/文本处理流程/</a> -->
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/NextNight" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/NextNight" target="_blank"><span class="text-dark">Kala</span><small class="ml-1x">DL &amp; ML</small></a></h3>
+        <div>If not me,who? If not now.when?</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="vcomments"></div>
+
+    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/09/13/mac-jupyter中文显示设置/" title="mac jupyter中文显示设置"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/xxx.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/xxx.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
+    
+    
+
+
+
+</body>
+</html>
