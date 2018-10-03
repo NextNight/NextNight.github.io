@@ -5961,8 +5961,9 @@ body.no-sidebar .sidebar {
 }
 
 .widget .widget-title {
-  font-size: 18px;
-  color: #000;
+    font-size: 18px;
+    color: #000;
+    font-family: monospace;
 }
 
 .widget time {
