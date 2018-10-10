@@ -18,19 +18,19 @@
   
   
   <title>ML-Logistic回归 | Kala</title>
-  <meta name="description" content="&amp;lt;script&amp;gt; MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\(&apos;,&apos;\)&apos;],[&apos;\&apos;,&apos;\&apos;]]} }); &amp;lt;/script&amp;gt; :hearts:Logist  ① 什么是逻辑回归？  逻辑回归是一种分类算法，它衍生于线性回归，我们都知道线性回归使用一条线去拟合数据，通常情况x和y没有界限。而我们可以">
+  <meta name="description" content="MathJax.Hub.Config({tex2jax: {inlineMath: [[‘$’,’$’], [‘\(‘,’\)’],[‘\‘,’\‘]]}}); :hearts:Logist ① 什么是逻辑回归？  逻辑回归是一种分类算法，它衍生于线性回归，我们都知道线性回归使用一条线去拟合数据，通常情况x和y没有界限。而我们可以通过取阈值来将这条线划分为两个部分，比如说&amp;gt;0.5这部分设为1">
 <meta name="keywords" content="逻辑回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ML-Logistic回归">
 <meta property="og:url" content="http://nextnight.github.io/2018/09/29/ML-Logistic回归/index.html">
 <meta property="og:site_name" content="Kala">
-<meta property="og:description" content="&amp;lt;script&amp;gt; MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\(&apos;,&apos;\)&apos;],[&apos;\&apos;,&apos;\&apos;]]} }); &amp;lt;/script&amp;gt; :hearts:Logist  ① 什么是逻辑回归？  逻辑回归是一种分类算法，它衍生于线性回归，我们都知道线性回归使用一条线去拟合数据，通常情况x和y没有界限。而我们可以">
+<meta property="og:description" content="MathJax.Hub.Config({tex2jax: {inlineMath: [[‘$’,’$’], [‘\(‘,’\)’],[‘\‘,’\‘]]}}); :hearts:Logist ① 什么是逻辑回归？  逻辑回归是一种分类算法，它衍生于线性回归，我们都知道线性回归使用一条线去拟合数据，通常情况x和y没有界限。而我们可以通过取阈值来将这条线划分为两个部分，比如说&amp;gt;0.5这部分设为1">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://nextnight.github.io/2018/09/29/ML-Logistic回归/media/15390610499477/logist.png">
-<meta property="og:updated_time" content="2018-10-10T02:59:43.444Z">
+<meta property="og:updated_time" content="2018-10-10T03:03:15.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ML-Logistic回归">
-<meta name="twitter:description" content="&amp;lt;script&amp;gt; MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\(&apos;,&apos;\)&apos;],[&apos;\&apos;,&apos;\&apos;]]} }); &amp;lt;/script&amp;gt; :hearts:Logist  ① 什么是逻辑回归？  逻辑回归是一种分类算法，它衍生于线性回归，我们都知道线性回归使用一条线去拟合数据，通常情况x和y没有界限。而我们可以">
+<meta name="twitter:description" content="MathJax.Hub.Config({tex2jax: {inlineMath: [[‘$’,’$’], [‘\(‘,’\)’],[‘\‘,’\‘]]}}); :hearts:Logist ① 什么是逻辑回归？  逻辑回归是一种分类算法，它衍生于线性回归，我们都知道线性回归使用一条线去拟合数据，通常情况x和y没有界限。而我们可以通过取阈值来将这条线划分为两个部分，比如说&amp;gt;0.5这部分设为1">
 <meta name="twitter:image" content="http://nextnight.github.io/2018/09/29/ML-Logistic回归/media/15390610499477/logist.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://nextnight.github.io/2018/09/29/ML-Logistic回归/index.html">
@@ -389,7 +389,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">:hearts:Logist</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hearts-Logist"><span class="toc-number">1.</span> <span class="toc-text">:hearts:Logist</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -436,13 +436,8 @@
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <p>&lt;script&gt;
-MathJax.Hub.Config({
-tex2jax: {inlineMath: [['$','$'], ['\(','\)'],['\','\']]}
-});
-&lt;/script&gt;</p>
-<h1>:hearts:Logist</h1>
-<blockquote>
+        <p><script><br>MathJax.Hub.Config({<br>tex2jax: {inlineMath: [[‘$’,’$’], [‘\(‘,’\)’],[‘\‘,’\‘]]}<br>});<br></script></p>
+<h1 id="hearts-Logist"><a href="#hearts-Logist" class="headerlink" title=":hearts:Logist"></a>:hearts:Logist</h1><blockquote>
 <p>① 什么是逻辑回归？</p>
 </blockquote>
 <p>逻辑回归是一种分类算法，它衍生于线性回归，我们都知道线性回归使用一条线去拟合数据，通常情况x和y没有界限。而我们可以通过取阈值来将这条线划分为两个部分，比如说&gt;0.5这部分设为1，小于0.5为0，这样就将数据划分为了两类。但是线性回归的数据通常不稳定，我们需要不断地去调整这个阈值才能将其分为两个想要的类别，因此逻辑回归诞生了。</p>
@@ -453,17 +448,8 @@ tex2jax: {inlineMath: [['$','$'], ['\(','\)'],['\','\']]}
 <p>1、假设有一个线性函数：${\color{DarkGreen} z=wx+b}$ ,sigmod函数：${\color{DarkGreen} y = \frac{1}{1+e^{-z}}}$ ,</p>
 <p>2、假设p(y=1|x):表示y=1的概率，那么1-p就表示y=0的概率，</p>
 <p>3、则对数几率：$ {\color{DarkGreen} ln(\frac{p}{1-p})}$ ,我们用这个对数几率ods去拟合线性函数 $ {\color{DarkGreen} ln(\frac{p}{1-p})=z}$ 可推导如下：</p>
-<p>$$
-\begin{aligned}
-&amp;\Rightarrow {\color{DarkGreen} ln(\frac{p}{1-p})=z}\
-&amp;\Rightarrow {\color{DarkGreen} e^{z}=\frac{p}{1-p}}\
-&amp;\Rightarrow {\color{DarkGreen} e^{-z}=\frac{1-p}{p}}\
-&amp;\Rightarrow {\color{DarkGreen} e^{-z}=\frac{1}{p}-1}\
-&amp;\Rightarrow {\color{DarkGreen} e^{-z}+1=\frac{1}{p}}\
-&amp;\Rightarrow {\color{DarkGreen} p=\frac{1}{e^{-z}+1}}\
-\end{aligned}
-$$</p>
-<p>如上可得:${\color{DarkGreen} y=p}$ 则说明函数值y确实表示是概率值。</p>
+<p>$$<br>\begin{aligned}<br>&amp;\Rightarrow {\color{DarkGreen} ln(\frac{p}{1-p})=z}\<br>&amp;\Rightarrow {\color{DarkGreen} e^{z}=\frac{p}{1-p}}\<br>&amp;\Rightarrow {\color{DarkGreen} e^{-z}=\frac{1-p}{p}}\<br>&amp;\Rightarrow {\color{DarkGreen} e^{-z}=\frac{1}{p}-1}\<br>&amp;\Rightarrow {\color{DarkGreen} e^{-z}+1=\frac{1}{p}}\<br>&amp;\Rightarrow {\color{DarkGreen} p=\frac{1}{e^{-z}+1}}\<br>\end{aligned}<br>$$</p>
+<p>   如上可得:${\color{DarkGreen} y=p}$ 则说明函数值y确实表示是概率值。</p>
 <blockquote>
 <p>③  逻辑回归的损失函数是什么？</p>
 </blockquote>
@@ -474,84 +460,29 @@ $$</p>
 <li>类别为1的概率：${\color{DarkGreen}p(y=1|x,w)= h(z)}$</li>
 <li>类别为0的概率：${\color{DarkGreen}p(y=0|x,w)=1-h(z) }$</li>
 <li>将以上两式通用式：${\color{DarkGreen}p(y|x,w)=h(z)^{y^i}.(1-h(z)^{1-y^i})}$</li>
-<li>MLE:
-$$
-\begin{aligned}
-L(w)&amp;=\prod_{i=1}^n{p(y^i|x^i,w)}\
-&amp;=\prod_{i=1}^n{h(z)^{y^i}.(1-h(z))^{1-y^i}}\
-\end{aligned}
-$$</li>
-<li>简化MLE：取对数似然,<code>概率积-&gt;概率和</code>方便计算。
-$$
-\begin{aligned}
-L(w)&amp;=\prod_{i=1}^n{p(y^i|x^i,w)}\
-&amp;=\prod_{i=1}^n{h(z)^{y^i}.(1-h(z))^{1-y^i}}\
-ln(L(w))&amp;=\sum_{i=1}^{n}(y^iln(h(z)+(1-y^i)ln(1-h(z)))
-\end{aligned}
-$$</li>
-<li>负对数似然：给以上的 $ln(L(w))$ 取负，得到负对数似然，对数似然有极大值，负对数似然有极小值，损失函数即是找到一个关于误差最小的函数则Logist的损失函数为：
-$$
-J(w) = -ln(L(w))=- \sum_{i=1}^{n}(y^iln(h(z)+(1-y^i)ln(1-h(z)))
-$$</li>
+<li>MLE:<br>$$<br>\begin{aligned}<br>L(w)&amp;=\prod_{i=1}^n{p(y^i|x^i,w)}\<br>&amp;=\prod_{i=1}^n{h(z)^{y^i}.(1-h(z))^{1-y^i}}\<br>\end{aligned}<br>$$</li>
+<li>简化MLE：取对数似然,<code>概率积-&gt;概率和</code>方便计算。<br>$$<br>\begin{aligned}<br>L(w)&amp;=\prod_{i=1}^n{p(y^i|x^i,w)}\<br>&amp;=\prod_{i=1}^n{h(z)^{y^i}.(1-h(z))^{1-y^i}}\<br>ln(L(w))&amp;=\sum_{i=1}^{n}(y^iln(h(z)+(1-y^i)ln(1-h(z)))<br>\end{aligned}<br>$$</li>
+<li>负对数似然：给以上的 $ln(L(w))$ 取负，得到负对数似然，对数似然有极大值，负对数似然有极小值，损失函数即是找到一个关于误差最小的函数则Logist的损失函数为：<br>$$<br>J(w) = -ln(L(w))=- \sum_{i=1}^{n}(y^iln(h(z)+(1-y^i)ln(1-h(z)))<br>$$</li>
 </ul>
 <blockquote>
 <p>④ 逻辑回归损失函数的图像？</p>
 </blockquote>
 <p>1、分别对损失函数y取值0,1得到如下函数：</p>
-<p>$$
-J(h(z),y;w)=\begin{cases} -ln(h(z)) &amp; if\quad y=1 \ -ln(1-h(z)) &amp; if\quad y=0 \end{cases}
-$$</p>
-<p>2、得到图像如下：
-<img src="media/15390610499477/logist.png" alt="logist"></p>
+<p>$$<br>J(h(z),y;w)=\begin{cases} -ln(h(z)) &amp; if\quad y=1 \ -ln(1-h(z)) &amp; if\quad y=0 \end{cases}<br>$$</p>
+<p>2、得到图像如下：<br><img src="media/15390610499477/logist.png" alt="logist"></p>
 <blockquote>
 <p>⑤ 逻辑回归如何求解？</p>
 </blockquote>
-<p>1、逻辑回归求解的是最优的参数集，即使得误差最小的参数集合。
-2、逻辑回归使用梯度下降求解最优参数：</p>
+<p>1、逻辑回归求解的是最优的参数集，即使得误差最小的参数集合。<br>2、逻辑回归使用梯度下降求解最优参数：</p>
 <blockquote>
-<p>梯度的负方向是损失函数下降最快的方向，我们的目标是最小化损失函数，所以要沿梯度的方向不断地去修改参数W的值使得J(w)损失函数值不断减小，到达最低点，此时的参数w就是最优的。
-为什么梯度负方向是损失函数下降最快的方向？
-因为梯度方向是函数值增长最快的方向。方向导数：就是多元函数关于某一个维度的偏导数，而关于某一点的方向导数有无穷个，表示函数在各个方向上的增长速度。那么如何描述函数在这个点上增长最快的方向呢？？引入[ - 梯度-  ] 的概念,梯度是函数在这个点上的各个方向导数的矢量和，即是各个偏导数构成的向量。</p>
+<p>梯度的负方向是损失函数下降最快的方向，我们的目标是最小化损失函数，所以要沿梯度的方向不断地去修改参数W的值使得J(w)损失函数值不断减小，到达最低点，此时的参数w就是最优的。<br>为什么梯度负方向是损失函数下降最快的方向？<br>因为梯度方向是函数值增长最快的方向。方向导数：就是多元函数关于某一个维度的偏导数，而关于某一点的方向导数有无穷个，表示函数在各个方向上的增长速度。那么如何描述函数在这个点上增长最快的方向呢？？引入[ - 梯度-  ] 的概念,梯度是函数在这个点上的各个方向导数的矢量和，即是各个偏导数构成的向量。</p>
 </blockquote>
 <blockquote>
 <p>⑥ SGD梯度下降如何求解？</p>
 </blockquote>
-<p>1、损失函数求偏导即梯度：
-$$
-\begin{aligned}
-\bigtriangledown =\frac {\partial J(w)}{\partial w_j}&amp;= {-ln(L(w))}' \
-&amp;=-\sum_ {i=1}^{n}({yln(h(z))+(1-y)ln(1-h(z)))}' \
-&amp;=-\sum_ {i=1}^{n} y\frac{1}{h(z)}{h(z)}'+(1-y)\frac{1}{1-h(z)}{(1-h(z))}' \
-对h(z)求偏导：\
-{h(z)}' &amp;={ \frac{1}{1+e^{-wx}}}'\
-&amp;= {(1+e^{-wx})^{-1}}'\
-&amp;= (1+e^{-wx})^{-2} {(1+e^{-wx})}'\
-&amp;= (1+e^{-wx})^{-2}e^{-wx}{(-wx)}'\
-&amp;= -  (1+e^{-wx})^{-2}e^{-wx}{(wx)}'\
-&amp;= -\frac{e^{-wx}}{(1+e^{-wx})^2} {(wx)}'\
-&amp;= - \frac{1}{(1+e^{-wx})}\frac{e^{-wx}}{(1+e^{-wx})} {(wx)}'\
-&amp;= - \frac{1}{(1+e^{-wx})}(1- \frac{1}{(1+e^{-wx})}){(wx)}'\
-&amp;= -h(z)(1-h(z)){(wx)}'\
-对1-h(z)求偏导：\
-(1-{h(z)})' &amp;=-{h(z)})'\
-&amp;=h(z)(1-h(z)){(wx)}'\
-\
-\bigtriangledown =\frac {\partial J(w)}{\partial w_j}&amp;= {-ln(L(w))}' \
-&amp;=-\sum_ {i=1}^{n} y\frac{1}{h(z)}(-h(z)(1-h(z)){(wx)}')+(1-y)\frac{1}{1-h(z)}(h(z)(1-h(z)){(wx)}')\
-&amp;=\sum_ {i=1}^{n} y\frac{1}{h(z)}(h(z)(1-h(z)){(wx)}')-(1-y)\frac{1}{1-h(z)}(h(z)(1-h(z)){(wx)}')\
-&amp;=\sum_ {i=1}^{n}[y(1-h(z))-(1-y)h(z)]{(wx)}'\
-&amp;=\sum_ {i=1}^{n}[y-yh(z)-h(z)+yh(z)]{(wx)}'\
-&amp;=\sum_ {i=1}^{n}(y-h(z)){(wx)}'\
-&amp;=\sum_ {i=1}^{n}(y-h(z))x_j\
-&amp;=(y-h(z))x_j\
-\bigtriangledown =\frac {\partial J(w)}{\partial w_j}&amp;=\sum_ {i=1}^{n}(y^i-h(z)^i){x_j}^i\
-其中i表示第i条数据，j表示第j维\
-\end{aligned}
-$$</p>
-<p>2、上面得到了关于$W_j$ 的梯度$\bigtriangledown$ ,迭代更新W,W的更新公式：$W_j=W_j+\alpha\bigtriangledown$ α表示学习率，
-3、批量梯度下降：
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 数据有：i行，<span class="keyword">j</span>列，所有要更新<span class="keyword">j</span>个<span class="keyword">w</span>,每个<span class="keyword">w</span>可以选择用多少条数据取更新它，默认是全量数据。即批量更新。</span><br><span class="line"><span class="keyword">for</span> data_i in data_num<span class="variable">s:</span></span><br><span class="line">    <span class="keyword">wi</span> = <span class="keyword">wi</span> + α*梯度</span><br></pre></td></tr></table></figure></p>
-<p>简单来说：$\overrightarrow { w}= (\overrightarrow { y } -\overrightarrow { h(z) } )\overrightarrow { x }$ 一次得到所有的W更新。1</p>
+<p>1、损失函数求偏导即梯度：<br>$$<br>\begin{aligned}<br>\bigtriangledown =\frac {\partial J(w)}{\partial w_j}&amp;= {-ln(L(w))}’ \<br>&amp;=-\sum_ {i=1}^{n}({yln(h(z))+(1-y)ln(1-h(z)))}’ \<br>&amp;=-\sum_ {i=1}^{n} y\frac{1}{h(z)}{h(z)}’+(1-y)\frac{1}{1-h(z)}{(1-h(z))}’         \<br>对h(z)求偏导：\<br>{h(z)}’ &amp;={ \frac{1}{1+e^{-wx}}}’\<br>&amp;= {(1+e^{-wx})^{-1}}’\<br>&amp;= (1+e^{-wx})^{-2} {(1+e^{-wx})}’\<br>&amp;= (1+e^{-wx})^{-2}e^{-wx}{(-wx)}’\<br>&amp;= -  (1+e^{-wx})^{-2}e^{-wx}{(wx)}’\<br>&amp;= -\frac{e^{-wx}}{(1+e^{-wx})^2} {(wx)}’\<br>&amp;= - \frac{1}{(1+e^{-wx})}\frac{e^{-wx}}{(1+e^{-wx})} {(wx)}’\<br>&amp;= - \frac{1}{(1+e^{-wx})}(1- \frac{1}{(1+e^{-wx})}){(wx)}’\<br>&amp;= -h(z)(1-h(z)){(wx)}’\<br>对1-h(z)求偏导：\<br>(1-{h(z)})’ &amp;=-{h(z)})’\<br>&amp;=h(z)(1-h(z)){(wx)}’\<br>\<br>\bigtriangledown =\frac {\partial J(w)}{\partial w_j}&amp;= {-ln(L(w))}’ \<br>&amp;=-\sum_ {i=1}^{n} y\frac{1}{h(z)}(-h(z)(1-h(z)){(wx)}’)+(1-y)\frac{1}{1-h(z)}(h(z)(1-h(z)){(wx)}’)\<br>&amp;=\sum_ {i=1}^{n} y\frac{1}{h(z)}(h(z)(1-h(z)){(wx)}’)-(1-y)\frac{1}{1-h(z)}(h(z)(1-h(z)){(wx)}’)\<br>&amp;=\sum_ {i=1}^{n}[y(1-h(z))-(1-y)h(z)]{(wx)}’\<br>&amp;=\sum_ {i=1}^{n}[y-yh(z)-h(z)+yh(z)]{(wx)}’\<br>&amp;=\sum_ {i=1}^{n}(y-h(z)){(wx)}’\<br>&amp;=\sum_ {i=1}^{n}(y-h(z))x_j\<br>&amp;=(y-h(z))x_j\<br>\bigtriangledown =\frac {\partial J(w)}{\partial w_j}&amp;=\sum_ {i=1}^{n}(y^i-h(z)^i){x_j}^i\<br>其中i表示第i条数据，j表示第j维\<br>\end{aligned}<br>$$</p>
+<p>2、上面得到了关于$W_j$ 的梯度$\bigtriangledown$ ,迭代更新W,W的更新公式：$W_j=W_j+\alpha\bigtriangledown$ α表示学习率，<br>3、批量梯度下降：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 数据有：i行，<span class="keyword">j</span>列，所有要更新<span class="keyword">j</span>个<span class="keyword">w</span>,每个<span class="keyword">w</span>可以选择用多少条数据取更新它，默认是全量数据。即批量更新。</span><br><span class="line"><span class="keyword">for</span> data_i in data_num<span class="variable">s:</span></span><br><span class="line">    <span class="keyword">wi</span> = <span class="keyword">wi</span> + α*梯度</span><br></pre></td></tr></table></figure></p>
+<p>简单来说：$\overrightarrow { w}= (\overrightarrow { y } -\overrightarrow { h(z) } )\overrightarrow { x }$ 一次得到所有的W更新。</p>
 
       
     </div>
